@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=San+Francisco&display=swap">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+<style>
+    body {
+        font-family: 'San Francisco', sans-serif;
+    }
+    a:hover{
+        color: black;
+        cursor:pointer
+    }
+</style>
+<body class="items-center">
+        <nav class="flex justify-between font-normal mx-auto max-w-5xl min-w-80 text-gray-700 drop-shadow">
+                <ul class="flex items-center cursor-pointer">
+                    <li class="">
+                        <span class="globalnav-image-regular globalnav-link-image"><svg height="44" viewBox="0 0 14 44" width="14" xmlns="http://www.w3.org/2000/svg">
+                        <path d="m13.0729 17.6825a3.61 3.61 0 0 0 -1.7248 3.0365 3.5132 3.5132 0 0 0 2.1379 3.2223 8.394 8.394 0 0 1 -1.0948 2.2618c-.6816.9812-1.3943 1.9623-2.4787 1.9623s-1.3633-.63-2.613-.63c-1.2187 0-1.6525.6507-2.644.6507s-1.6834-.9089-2.4787-2.0243a9.7842 9.7842 0 0 1 -1.6628-5.2776c0-3.0984 2.014-4.7405 3.9969-4.7405 1.0535 0 1.9314.6919 2.5924.6919.63 0 1.6112-.7333 2.8092-.7333a3.7579 3.7579 0 0 1 3.1604 1.5802zm-3.7284-2.8918a3.5615 3.5615 0 0 0 .8469-2.22 1.5353 1.5353 0 0 0 -.031-.32 3.5686 3.5686 0 0 0 -2.3445 1.2084 3.4629 3.4629 0 0 0 -.8779 2.1585 1.419 1.419 0 0 0 .031.2892 1.19 1.19 0 0 0 .2169.0207 3.0935 3.0935 0 0 0 2.1586-1.1368z"></path></svg></span>
+                    </li>
+                </ul>
+                <ul class="flex items-center">
+                    <li class="">
+                        <a class="text-xs">Store</a>
+                    </li>
+                </ul>
+                <ul class="flex items-center">
+                    <li class="">
+                        <a class="text-xs">Mac</a>
+                    </li>
+                </ul>
+                <ul class="flex items-center">
+                    <li class="">
+                            <a class="text-xs">iPad</a>
+                    </li>
+                </ul>
+                <ul class="flex items-center">
+                    <li class="">
+                        <a class="text-xs">iPhone</a>
+                    </li>
+                </ul>
+                <ul class="flex items-center">
+                    <li class="">
+                        <a class="text-xs">Watch</a>
+                    </li>
+                </ul>
+                <ul class="flex items-center">
+                    <li class="">
+                        <a class="text-xs">AirPods</a>
+                    </li>
+                </ul>
+                <ul class="flex items-center">
+                    <li class="">
+                        <a class="text-xs">TV & Home</a>
+                    </li>
+                </ul>
+                <ul class="flex items-center">
+                    <li class="">
+                        <a class="text-xs">Entertainment</a>
+                    </li>
+                </ul>
+                <ul class="flex items-center">
+                    <li class="">
+                        <a class="text-xs">Accessories</a>
+                    </li>
+                </ul>
+                <ul class="flex items-center">
+                    <li class="">
+                        <a class="text-xs">Support</a>
+                    </li>
+                </ul>
+                <ul class="flex items-center cursor-pointer">
+                    <li class="">
+                        <span class="globalnav-image-regular">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="15px" height="44px" viewBox="0 0 15 44">
+                                <path d="M14.298,27.202l-3.87-3.87c0.701-0.929,1.122-2.081,1.122-3.332c0-3.06-2.489-5.55-5.55-5.55c-3.06,0-5.55,2.49-5.55,5.55 c0,3.061,2.49,5.55,5.55,5.55c1.251,0,2.403-0.421,3.332-1.122l3.87,3.87c0.151,0.151,0.35,0.228,0.548,0.228 s0.396-0.076,0.548-0.228C14.601,27.995,14.601,27.505,14.298,27.202z M1.55,20c0-2.454,1.997-4.45,4.45-4.45 c2.454,0,4.45,1.997,4.45,4.45S8.454,24.45,6,24.45C3.546,24.45,1.55,22.454,1.55,20z"></path>
+                            </svg>
+                        </span>
+                        <span class="globalnav-image-compact" hidden>
+                            <svg height="48" viewBox="0 0 17 48" width="17" xmlns="http://www.w3.org/2000/svg">
+                                <path d="m16.2294 29.9556-4.1755-4.0821a6.4711 6.4711 0 1 0 -1.2839 1.2625l4.2005 4.1066a.9.9 0 1 0 1.2588-1.287zm-14.5294-8.0017a5.2455 5.2455 0 1 1 5.2455 5.2527 5.2549 5.2549 0 0 1 -5.2455-5.2527z"></path>
+                            </svg>
+                        </span>
+                    </li>
+                </ul>
+                <ul class="flex items-center cursor-pointer">
+                    <li class="">
+                        <span class="globalnav-image-regular">
+                            <svg height="44" viewBox="0 0 14 44" width="14" xmlns="http://www.w3.org/2000/svg">
+                                <path d="m11.3535 16.0283h-1.0205a3.4229 3.4229 0 0 0 -3.333-2.9648 3.4229 3.4229 0 0 0 -3.333 2.9648h-1.02a2.1184 2.1184 0 0 0 -2.117 2.1162v7.7155a2.1186 2.1186 0 0 0 2.1162 2.1167h8.707a2.1186 2.1186 0 0 0 2.1168-2.1167v-7.7155a2.1184 2.1184 0 0 0 -2.1165-2.1162zm-4.3535-1.8652a2.3169 2.3169 0 0 1 2.2222 1.8652h-4.4444a2.3169 2.3169 0 0 1 2.2222-1.8652zm5.37 11.6969a1.0182 1.0182 0 0 1 -1.0166 1.0171h-8.7069a1.0182 1.0182 0 0 1 -1.0165-1.0171v-7.7155a1.0178 1.0178 0 0 1 1.0166-1.0166h8.707a1.0178 1.0178 0 0 1 1.0164 1.0166z"></path>
+                            </svg>
+                        </span>
+                        <span class="globalnav-image-compact" hidden>
+                            <svg height="48" viewBox="0 0 17 48" width="17" xmlns="http://www.w3.org/2000/svg">
+                                <path d="m13.4575 16.9268h-1.1353a3.8394 3.8394 0 0 0 -7.6444 0h-1.1353a2.6032 2.6032 0 0 0 -2.6 2.6v8.9232a2.6032 2.6032 0 0 0 2.6 2.6h9.915a2.6032 2.6032 0 0 0 2.6-2.6v-8.9231a2.6032 2.6032 0 0 0 -2.6-2.6001zm-4.9575-2.2768a2.658 2.658 0 0 1 2.6221 2.2764h-5.2442a2.658 2.658 0 0 1 2.6221-2.2764zm6.3574 13.8a1.4014 1.4014 0 0 1 -1.4 1.4h-9.9149a1.4014 1.4014 0 0 1 -1.4-1.4v-8.9231a1.4014 1.4014 0 0 1 1.4-1.4h9.915a1.4014 1.4014 0 0 1 1.4 1.4z"></path>
+                            </svg>
+                        </span>
+                    </li>
+                </ul>
+        </nav>
+
+        <div class="max-w-5xl m-auto flex justify-between pt-5 pb-2 ">
+            <div>
+                <a class="font-semibold text-xl">MacBook Pro</a>
+            </div>
+            <div class="">
+                <ul class="text-xs font-normal flex text-gray-600">
+                    <li class="mr-6">
+                        <a>Overview</a>
+                    </li>
+                    <li class="mr-6">
+                        <a>macOS</a>
+                    </li>
+                    <li class="mr-6">
+                        <a>Compare</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="py-4 min-w-80 flex items-center justify-center font-normal text-sm bg-gray-100 border-t-2">
+            <div>
+                Pay 0% interest for up to 24 months. Terms apply.
+            </div>
+            <sup>◊◊</sup>
+            <a href="#" class="hover:underline" style="color: #06c">Learn&nbsp;more&nbsp> </a>
+        </div>
+
+        <div class="text-5xl font-seimbold flex items-center m-auto justify-center mt-12 pb-5">
+                Choose your new MacBook Pro.
+        </div>
+        <div class="mt-2.5 pb-5 flex flex-col items-center justify-center">
+                <svg viewBox="0 0 35 35" class="as-svgicon as-svgicon-chat as-svgicon-base as-svgicon-chatbase" role="img" aria-hidden="true" width="35px" height="35px">
+                    <path fill="none" d="M0 .213h35v35H0z"></path>
+                    <path d="M14.4 21.048a13.284 13.284 0 01-1.344.076q-.411 0-.829-.025l-.334-.02-.279.185a15.461 15.461 0 01-4.388 2.109 16.182 16.182 0 001.365-2.054l.484-.923-.941-.446a7.127 7.127 0 01-4.384-6.276c0-4.114 4.274-7.461 9.529-7.461s9.529 3.347 9.529 7.461c0 .059-.009.116-.011.174.33-.029.664-.046 1-.046 0-.043.008-.085.008-.128 0-4.677-4.67-8.461-10.529-8.461S2.75 9 2.75 13.674a8.1 8.1 0 004.95 7.181 18.048 18.048 0 01-1.573 2.305c-.481.6-.236 1.28.613 1.28 1.17 0 3.557-1.1 5.425-2.343q.448.027.888.027c.455 0 .9-.028 1.34-.069-.011-.157-.029-.312-.029-.472 0-.183.018-.357.036-.535z"></path>
+                    <path d="M32.25 21.583c0-3.749-3.745-6.782-8.443-6.782h-.1c-.351 0-.694.027-1.032.063-3.876.413-6.886 2.906-7.269 6.036a5.584 5.584 0 00-.042.678c0 .117.015.23.021.345.222 3.737 3.994 6.428 8.6 6.428.235 0 .473-.007.712-.021a10.723 10.723 0 004.35 1.878c.681 0 .878-.543.492-1.026a14.459 14.459 0 01-1.263-1.848 6.5 6.5 0 003.974-5.751zm-4.4 4.852l-.942.446.484.923a10.673 10.673 0 00.759 1.2 14.28 14.28 0 01-2.9-1.5l-.279-.185-.334.02c-.219.013-.437.019-.653.019-4.21 0-7.515-2.462-7.614-5.629 0-.048-.009-.1-.009-.144a4.521 4.521 0 01.1-.922c.5-2.386 2.87-4.288 5.908-4.75a9.506 9.506 0 011.092-.1c.113 0 .225-.013.339-.013 4.1 0 7.443 2.594 7.443 5.782a5.517 5.517 0 01-3.394 4.853z"></path>
+                </svg>
+                <div class="font-normal	text-xl">
+                    Have questions about buying Mac?
+                </div>
+                <a class="font-normal text-xl hover:underline" style="color: #06c" >
+                    Chat with a Mac Specialist
+                </a>
+        </div>
+
+        <div class="py-5 flex justify-center">
+            <button class="14-button bg-transparent border border-gray-600 text-black rounded-s-xl px-4 py-2 focus:outline-none">
+                <div class="py-5 px-4">
+                    14-inch
+                </div>
+            </button>
+            <button class="16-button bg-transparent border border-gray-600 text-black rounded-e-xl px-4 py-2 focus:outline-none">
+                <div class="py-5 px-4">
+                    16-inch
+                </div>
+            </button>
+        </div>
+
+        <div>
+            Filter by chip:
+        </div>
+
+</body>
+<script>
+$(document).ready(function(){
+
+    $(".14-button").click(function(){
+      $(this).addClass("border-2");
+      $(this).addClass("border-blue-600");
+      $(".16-button").removeClass("border-2");
+      $(".16-button").removeClass("border-blue-600");
+    });
+
+    $(".16-button").click(function(){
+      $(this).addClass("border-2");
+      $(this).addClass("border-blue-600");
+      $(".14-button").removeClass("border-2");
+      $(".14-button").removeClass("border-blue-600");
+    });
+
+    $(".14-button").click();
+
+  });
+</script>
+</html>
