@@ -1,0 +1,2 @@
+--INSERT INTO Product (id , product_name , description , unit_price , installment_price)
+--VALUES (1 , '8-core CPU\n10-core GPU\n8GB Unified Memory\n512GB SSD Storage¹' ,'14-inch Liquid Retina XDR display²\nTwo Thunderbolt / USB 4 ports, HDMI port, SDXC card slot, headphone jack, MagSafe 3 port\nMagic Keyboard with Touch ID\nForce Touch trackpad\n70W USB-C Power Adapter' , 7499.0 , 312.46);

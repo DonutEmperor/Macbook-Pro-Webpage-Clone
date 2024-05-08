@@ -25,35 +25,35 @@ public class ProductController {
     List<Product> findAll(){
         return productRepository.findAll();
     }
-//
-//    //Get By ID
-//    @GetMapping("/{id}")
-//    Product findById(@PathVariable Integer id){
-//        Optional<Product> product = productRepository.findById(id);
-//        if(product.isEmpty()){
-//            throw new ProductNotFoundException();
-//        }
-//        return product.get();
-//    }
-//
-//    //Create
-//    @ResponseStatus(HttpStatus.CREATED)
-//    @PostMapping("/create")
-//    void create(@Valid @RequestBody Product product){
-//        productRepository.create(product);
-//    }
-//
-//    //Update
-//    @ResponseStatus(HttpStatus.NO_CONTENT)
-//    @PutMapping("/put/{id}")
-//    void put(@Valid @RequestBody Product product , @PathVariable Integer id){
-//        productRepository.update(product, id);
-//    }
-//
-//    @ResponseStatus(HttpStatus.NO_CONTENT)
-//    @DeleteMapping("/delete/{id}")
-//    void delete(@PathVariable Integer id){
-//        productRepository.delete(id);
-//    }
+
+    //Get By ID
+    @GetMapping("/{id}")
+    Product findById(@PathVariable Integer id){
+        Optional<Product> product = productRepository.findById(id);
+        if(product.isEmpty()){
+            throw new ProductNotFoundException();
+        }
+        return product.get();
+    }
+
+    //Create
+    @ResponseStatus(HttpStatus.CREATED)
+    @PostMapping("/create")
+    void create(@Valid @RequestBody Product product){
+        productRepository.create(product);
+    }
+
+    //Update
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @PutMapping("/put/{id}")
+    void put(@Valid @RequestBody Product product , @PathVariable Integer id){
+        productRepository.update(product, id);
+    }
+
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @DeleteMapping("/delete/{id}")
+    void delete(@PathVariable Integer id){
+        productRepository.delete(id);
+    }
 
 }

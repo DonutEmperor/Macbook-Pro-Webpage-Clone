@@ -18,6 +18,7 @@
     }
 </style>
 <body class="items-center">
+        <!--Navbar-->
         <nav class="flex justify-between font-normal mx-auto max-w-5xl min-w-80 text-gray-700 drop-shadow">
                 <ul class="flex items-center cursor-pointer">
                     <li class="">
@@ -105,6 +106,7 @@
                 </ul>
         </nav>
 
+        <!--Local Navbar-->
         <div class="max-w-5xl m-auto flex justify-between pt-5 pb-2 ">
             <div>
                 <a class="font-semibold text-xl">MacBook Pro</a>
@@ -124,6 +126,7 @@
             </div>
         </div>
 
+        <!--Notification Portal-->
         <div class="py-4 min-w-80 flex items-center justify-center font-normal text-sm bg-gray-100 border-t-2">
             <div>
                 Pay 0% interest for up to 24 months. Terms apply.
@@ -132,6 +135,7 @@
             <a href="#" class="hover:underline" style="color: #06c">Learn&nbsp;more&nbsp> </a>
         </div>
 
+        <!--Content Header-->
         <div class="text-5xl font-seimbold flex items-center m-auto justify-center mt-12 pb-5">
                 Choose your new MacBook Pro.
         </div>
@@ -150,25 +154,64 @@
         </div>
 
         <div class="py-5 flex justify-center">
-            <button class="14-button bg-transparent border border-gray-600 text-black rounded-s-xl px-4 py-2 focus:outline-none">
-                <div class="py-5 px-4">
+            <button class="py-5 px-4 14-button bg-transparent border border-gray-600 text-black rounded-s-xl px-4 py-2 focus:outline-none">
                     14-inch
-                </div>
             </button>
-            <button class="16-button bg-transparent border border-gray-600 text-black rounded-e-xl px-4 py-2 focus:outline-none">
-                <div class="py-5 px-4">
+            <button class="py-5 px-4 16-button bg-transparent border border-gray-600 text-black rounded-e-xl px-4 py-2 focus:outline-none">
                     16-inch
-                </div>
             </button>
         </div>
 
-        <div>
+        <div class="flex text-sm font-normal justify-center mt-2.5 mb-4">
             Filter by chip:
+        </div>
+
+        <div class="m-auto flex items-center justify-center">
+            <ul class="flex">
+                <li class="mr-2.5">
+                    <button id="all-btn" style="background-color: #e8e8ed" class="rounded-3xl pl-5 pr-5 h-9 text-sm font-semibold">
+                        All
+                    </button>
+                </li>
+                <li class="mr-2.5">
+                    <button id="m3-btn" style="background-color: #e8e8ed" class="rounded-3xl pl-5 pr-5 h-9 text-sm font-semibold">
+                        M3
+                    </button>
+                </li>
+                <li class="mr-2.5">
+                    <button id="m3-pro-btn" style="background-color: #e8e8ed" class="rounded-3xl pl-5 pr-5 h-9 text-sm font-semibold">
+                        M3 Pro
+                    </button>
+                </li>
+                <li class="mr-2.5">
+                    <button id="m3-max-btn" style="background-color: #e8e8ed" class="rounded-3xl pl-5 pr-5 h-9 text-sm font-semibold">
+                        M3 Max
+                    </button>
+                </li>
+            </ul>
+        </div>
+
+        <div>
+            <h1>MacBook List</h1>
+            <ul id="macbook-list"></ul>
         </div>
 
 </body>
 <script>
 $(document).ready(function(){
+
+            $.ajax({
+                url: 'http://localhost:8080/api/macbook/find/m3',
+                method: 'GET',
+                success: function(data) {
+                    data.forEach(function(macbook) {
+                        $('#macbook-list').append('<li>' + macbook.size + ' - ' + macbook.color + '</li>');
+                    });
+                },
+                error: function(xhr, status, error) {
+                    console.error('Error fetching MacBook data:', error);
+                }
+            });
 
     $(".14-button").click(function(){
       $(this).addClass("border-2");
@@ -186,6 +229,83 @@ $(document).ready(function(){
 
     $(".14-button").click();
 
+    $("#all-btn").click(function(){
+        $(this).css({
+            "background-color": "#1d1d1f",
+        });
+        $(this).addClass("text-white");
+        $("#m3-max-btn").removeClass("text-white");
+        $("#m3-max-btn").css({
+            "background-color": "#e8e8ed",
+        });
+        $("#m3-pro-btn").removeClass("text-white");
+        $("#m3-pro-btn").css({
+            "background-color": "#e8e8ed",
+        });
+        $("#m3-btn").removeClass("text-white");
+        $("#m3-btn").css({
+            "background-color": "#e8e8ed",
+        });
+    });
+
+    $("#m3-max-btn").click(function(){
+        $(this).css({
+            "background-color": "#1d1d1f",
+        });
+        $(this).addClass("text-white");
+        $("#all-btn").removeClass("text-white");
+        $("#all-btn").css({
+            "background-color": "#e8e8ed",
+        });
+        $("#m3-pro-btn").removeClass("text-white");
+        $("#m3-pro-btn").css({
+            "background-color": "#e8e8ed",
+        });
+        $("#m3-btn").removeClass("text-white");
+        $("#m3-btn").css({
+            "background-color": "#e8e8ed",
+        });
+    });
+
+    $("#m3-btn").click(function(){
+        $(this).css({
+            "background-color": "#1d1d1f",
+        });
+        $(this).addClass("text-white");
+        $("#m3-max-btn").removeClass("text-white");
+        $("#m3-max-btn").css({
+            "background-color": "#e8e8ed",
+        });
+        $("#m3-pro-btn").removeClass("text-white");
+        $("#m3-pro-btn").css({
+            "background-color": "#e8e8ed",
+        });
+        $("#all-btn").removeClass("text-white");
+        $("#all-btn").css({
+            "background-color": "#e8e8ed",
+        });
+    });
+
+    $("#m3-pro-btn").click(function(){
+        $(this).css({
+            "background-color": "#1d1d1f",
+        });
+        $(this).addClass("text-white");
+        $("#m3-max-btn").removeClass("text-white");
+        $("#m3-max-btn").css({
+            "background-color": "#e8e8ed",
+        });
+        $("#all-btn").removeClass("text-white");
+        $("#all-btn").css({
+            "background-color": "#e8e8ed",
+        });
+        $("#m3-btn").removeClass("text-white");
+        $("#m3-btn").css({
+            "background-color": "#e8e8ed",
+        });
+    });
+
+    $("#all-btn").click();
   });
 </script>
 </html>

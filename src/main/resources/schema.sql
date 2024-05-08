@@ -1,8 +1,51 @@
-CREATE TABLE IF NOT EXISTS product(
-    id INT NOT NULL,
-    product_name VARCHAR(255) NOT NULL,
-    description VARCHAR(255) NOT NULL,
-    unit_price DOUBLE NOT NULL,
-    installment_price DOUBLE NOT NULL,
-    PRIMARY KEY (id)
-);
+--CREATE TABLE IF NOT EXISTS product(
+--    id INT NOT NULL,
+--
+--    product_name VARCHAR(255) NOT NULL,
+--    description VARCHAR(255) NOT NULL,
+--    unit_price DOUBLE NOT NULL,
+--    installment_price DOUBLE NOT NULL,
+--    PRIMARY KEY (id)
+--);
+--
+--CREATE TABLE IF NOT EXISTS macbook (
+--    id INT AUTO_INCREMENT PRIMARY KEY,
+--    size VARCHAR(255),
+--    color VARCHAR(255),
+--    processorTitle VARCHAR(255) NOT NULL,
+--    specification TEXT,
+--    unitPrice DOUBLE PRECISION CHECK (unitPrice > 0),
+--    installmentPrice DOUBLE PRECISION CHECK (installmentPrice > 0)
+--);
+--
+--CREATE TABLE IF NOT EXISTS chip_options (
+--    id INT AUTO_INCREMENT PRIMARY KEY,
+--    macbook_id INT,
+--    chip VARCHAR(255),
+--    FOREIGN KEY (macbook_id) REFERENCES macbook(id)
+--);
+--
+--CREATE TABLE IF NOT EXISTS memory_options (
+--    id INT AUTO_INCREMENT PRIMARY KEY,
+--    macbook_id INT,
+--    memory_size INT,
+--    unitPrice DOUBLE PRECISION CHECK (unitPrice > 0),
+--    FOREIGN KEY (macbook_id) REFERENCES macbook(id)
+--);
+--
+--CREATE TABLE IF NOT EXISTS storage_options (
+--    id INT AUTO_INCREMENT PRIMARY KEY,
+--    macbook_id INT,
+--    storage_size INT,
+--    unitPrice DOUBLE PRECISION CHECK (unitPrice > 0),
+--    FOREIGN KEY (macbook_id) REFERENCES macbook(id)
+--);
+--
+--CREATE TABLE IF NOT EXISTS keyboard_options (
+--    id INT AUTO_INCREMENT PRIMARY KEY,
+--    macbook_id INT,
+--    language VARCHAR(255),
+--    FOREIGN KEY (macbook_id) REFERENCES macbook(id)
+--);
+--
+--
