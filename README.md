@@ -113,10 +113,24 @@ public class MacBook{
 ```
 
 # Product Selection Page
+14-Inch
+![chrome_rUnN9Y8j9V](https://github.com/DonutEmperor/Macbook-Pro-Webpage-Clone/assets/56782553/1dd378a4-bf1f-441f-bd99-d9693640965b)
 
+16-Inch
+![chrome_CvgnrCrcD6](https://github.com/DonutEmperor/Macbook-Pro-Webpage-Clone/assets/56782553/78774a75-21ab-478b-b6e0-7f780d666161)
+
+Full-Selection Page (70% completed)
+![image](https://github.com/DonutEmperor/Macbook-Pro-Webpage-Clone/assets/56782553/8fb34834-3485-4d54-94bb-4ceea9ce636f)
+
+There are several problems which I was unable solve in time. One being:
+![chrome_X96OMK5gEQ](https://github.com/DonutEmperor/Macbook-Pro-Webpage-Clone/assets/56782553/b16da306-eb28-4f1d-8d96-42229c271b65)
 
 # Product Detail Page
 
+
+
+
+Note: Unfortunately, I wasn't able to polish the css to be 100% identical in time.
 
 Very challenging and fun!
 
