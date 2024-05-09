@@ -28,4 +28,8 @@ public class MacBookService {
         return macBookrepo.findBychip(chip);
     }
 
+    public long count (){
+        return macBookrepo.count();
+    }
+
 }

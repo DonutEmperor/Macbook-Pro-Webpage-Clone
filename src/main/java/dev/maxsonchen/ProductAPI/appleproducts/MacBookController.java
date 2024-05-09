@@ -29,6 +29,9 @@ public class MacBookController {
         return macBookService.findBychip(chip);
     }
 
-
+    @GetMapping("/count")
+    public long count(){
+        return macBookService.count();
+    }
 
 }
