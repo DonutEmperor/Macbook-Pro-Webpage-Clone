@@ -21,11 +21,22 @@ public class MacBookService {
 
     public void create(MacBook macBook){
         macBookrepo.save(macBook);
+    }
 
+    public MacBook findByid(Integer id){
+        return macBookrepo.findByid(id);
     }
 
     public List<MacBook> findBychip(String chip){
         return macBookrepo.findBychip(chip);
+    }
+
+    public List<MacBook> findByChipAndSize(String chip , String size){
+        return macBookrepo.findByChipAndSize(chip, size);
+    }
+
+    public List<MacBook> findBysize(String size){
+        return macBookrepo.findBysize(size);
     }
 
     public long count (){

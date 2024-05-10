@@ -2,9 +2,193 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=San+Francisco&display=swap">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
-<body>
-    <h1>HI</h1>
+<style>
+    body {
+        font-family: 'San Francisco', sans-serif;
+    }
+    a:hover{
+        color: black;
+        cursor:pointer
+    }
+    .summary-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            border-top: 1px solid #ccc;
+            padding: 10px;
+    }
+</style>
+<body class="items-center">
+    <!--Navbar-->
+    <nav class="flex justify-between font-normal mx-auto max-w-5xl min-w-80 text-gray-700 drop-shadow">
+        <ul class="flex items-center cursor-pointer">
+            <li class="">
+                            <span class="globalnav-image-regular globalnav-link-image"><svg height="44" viewBox="0 0 14 44" width="14" xmlns="http://www.w3.org/2000/svg">
+                            <path d="m13.0729 17.6825a3.61 3.61 0 0 0 -1.7248 3.0365 3.5132 3.5132 0 0 0 2.1379 3.2223 8.394 8.394 0 0 1 -1.0948 2.2618c-.6816.9812-1.3943 1.9623-2.4787 1.9623s-1.3633-.63-2.613-.63c-1.2187 0-1.6525.6507-2.644.6507s-1.6834-.9089-2.4787-2.0243a9.7842 9.7842 0 0 1 -1.6628-5.2776c0-3.0984 2.014-4.7405 3.9969-4.7405 1.0535 0 1.9314.6919 2.5924.6919.63 0 1.6112-.7333 2.8092-.7333a3.7579 3.7579 0 0 1 3.1604 1.5802zm-3.7284-2.8918a3.5615 3.5615 0 0 0 .8469-2.22 1.5353 1.5353 0 0 0 -.031-.32 3.5686 3.5686 0 0 0 -2.3445 1.2084 3.4629 3.4629 0 0 0 -.8779 2.1585 1.419 1.419 0 0 0 .031.2892 1.19 1.19 0 0 0 .2169.0207 3.0935 3.0935 0 0 0 2.1586-1.1368z"></path></svg></span>
+            </li>
+        </ul>
+        <ul class="flex items-center">
+            <li class="">
+                <a class="text-xs">Store</a>
+            </li>
+        </ul>
+        <ul class="flex items-center">
+            <li class="">
+                <a class="text-xs">Mac</a>
+            </li>
+        </ul>
+        <ul class="flex items-center">
+            <li class="">
+                <a class="text-xs">iPad</a>
+            </li>
+        </ul>
+        <ul class="flex items-center">
+            <li class="">
+                <a class="text-xs">iPhone</a>
+            </li>
+        </ul>
+        <ul class="flex items-center">
+            <li class="">
+                <a class="text-xs">Watch</a>
+            </li>
+        </ul>
+        <ul class="flex items-center">
+            <li class="">
+                <a class="text-xs">AirPods</a>
+            </li>
+        </ul>
+        <ul class="flex items-center">
+            <li class="">
+                <a class="text-xs">TV & Home</a>
+            </li>
+        </ul>
+        <ul class="flex items-center">
+            <li class="">
+                <a class="text-xs">Entertainment</a>
+            </li>
+        </ul>
+        <ul class="flex items-center">
+            <li class="">
+                <a class="text-xs">Accessories</a>
+            </li>
+        </ul>
+        <ul class="flex items-center">
+            <li class="">
+                <a class="text-xs">Support</a>
+            </li>
+        </ul>
+        <ul class="flex items-center cursor-pointer">
+            <li class="">
+                            <span class="globalnav-image-regular">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="15px" height="44px" viewBox="0 0 15 44">
+                                    <path d="M14.298,27.202l-3.87-3.87c0.701-0.929,1.122-2.081,1.122-3.332c0-3.06-2.489-5.55-5.55-5.55c-3.06,0-5.55,2.49-5.55,5.55 c0,3.061,2.49,5.55,5.55,5.55c1.251,0,2.403-0.421,3.332-1.122l3.87,3.87c0.151,0.151,0.35,0.228,0.548,0.228 s0.396-0.076,0.548-0.228C14.601,27.995,14.601,27.505,14.298,27.202z M1.55,20c0-2.454,1.997-4.45,4.45-4.45 c2.454,0,4.45,1.997,4.45,4.45S8.454,24.45,6,24.45C3.546,24.45,1.55,22.454,1.55,20z"></path>
+                                </svg>
+                            </span>
+                <span class="globalnav-image-compact" hidden>
+                                <svg height="48" viewBox="0 0 17 48" width="17" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="m16.2294 29.9556-4.1755-4.0821a6.4711 6.4711 0 1 0 -1.2839 1.2625l4.2005 4.1066a.9.9 0 1 0 1.2588-1.287zm-14.5294-8.0017a5.2455 5.2455 0 1 1 5.2455 5.2527 5.2549 5.2549 0 0 1 -5.2455-5.2527z"></path>
+                                </svg>
+                            </span>
+            </li>
+        </ul>
+        <ul class="flex items-center cursor-pointer">
+            <li class="">
+                            <span class="globalnav-image-regular">
+                                <svg height="44" viewBox="0 0 14 44" width="14" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="m11.3535 16.0283h-1.0205a3.4229 3.4229 0 0 0 -3.333-2.9648 3.4229 3.4229 0 0 0 -3.333 2.9648h-1.02a2.1184 2.1184 0 0 0 -2.117 2.1162v7.7155a2.1186 2.1186 0 0 0 2.1162 2.1167h8.707a2.1186 2.1186 0 0 0 2.1168-2.1167v-7.7155a2.1184 2.1184 0 0 0 -2.1165-2.1162zm-4.3535-1.8652a2.3169 2.3169 0 0 1 2.2222 1.8652h-4.4444a2.3169 2.3169 0 0 1 2.2222-1.8652zm5.37 11.6969a1.0182 1.0182 0 0 1 -1.0166 1.0171h-8.7069a1.0182 1.0182 0 0 1 -1.0165-1.0171v-7.7155a1.0178 1.0178 0 0 1 1.0166-1.0166h8.707a1.0178 1.0178 0 0 1 1.0164 1.0166z"></path>
+                                </svg>
+                            </span>
+                <span class="globalnav-image-compact" hidden>
+                                <svg height="48" viewBox="0 0 17 48" width="17" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="m13.4575 16.9268h-1.1353a3.8394 3.8394 0 0 0 -7.6444 0h-1.1353a2.6032 2.6032 0 0 0 -2.6 2.6v8.9232a2.6032 2.6032 0 0 0 2.6 2.6h9.915a2.6032 2.6032 0 0 0 2.6-2.6v-8.9231a2.6032 2.6032 0 0 0 -2.6-2.6001zm-4.9575-2.2768a2.658 2.658 0 0 1 2.6221 2.2764h-5.2442a2.658 2.658 0 0 1 2.6221-2.2764zm6.3574 13.8a1.4014 1.4014 0 0 1 -1.4 1.4h-9.9149a1.4014 1.4014 0 0 1 -1.4-1.4v-8.9231a1.4014 1.4014 0 0 1 1.4-1.4h9.915a1.4014 1.4014 0 0 1 1.4 1.4z"></path>
+                                </svg>
+                            </span>
+            </li>
+        </ul>
+    </nav>
+
+    <!--Local Navbar-->
+    <div class="max-w-5xl m-auto flex justify-between pt-5 pb-2 ">
+        <div>
+            <a class="font-semibold text-xl">MacBook Pro</a>
+        </div>
+        <div class="">
+            <ul class="text-xs font-normal flex text-gray-600">
+                <li class="mr-6">
+                    <a>Overview</a>
+                </li>
+                <li class="mr-6">
+                    <a>macOS</a>
+                </li>
+                <li class="mr-6">
+                    <a>Compare</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!--Notification Portal-->
+    <div class="py-4 min-w-80 flex items-center justify-center font-normal text-sm bg-gray-100 border-t-2">
+        <div>
+            Pay 0% interest for up to 24 months. Terms apply.
+        </div>
+        <sup>◊◊</sup>
+        <a href="#" class="hover:underline" style="color: #06c">Learn&nbsp;more&nbsp> </a>
+    </div>
+
+    <!--Content Header-->
+    <div class="pt-14 flex items-center justify-center">
+        <div class="flex justify-between ">
+            <img height="410" width="247" src="https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/mbp-14-m3-max-pro-spaceblack-cto-hero-202310?wid=772&hei=466&fmt=jpeg&qlt=90&.v=1697913381727">
+            <div class="macbook-title font-semibold text-xl"></div>
+        </div>
+    </div>
+
+    <div class="summary-bar" style="background-color:#f5f5f7;">
+        <div class="pt-5"><div class="pt-4 flex items-center justify-start">
+            <span class="mr-2">
+                <svg class="as-svgicon-rtl-mirrored as-svgicon as-svgicon-boxtruck as-svgicon-reduced as-svgicon-boxtruckreduced" viewBox="0 0 25 25" role="img" aria-hidden="true" width="25px" height="25px">
+                    <path fill="none" d="M0 0h25v25H0z"></path>
+                    <path fill="#1d1d1f" d="m23.482 12.847-2.92-3.209A1.947 1.947 0 0 0 18.985 9H17V6.495a2.5 2.5 0 0 0-2.5-2.5h-11a2.5 2.5 0 0 0-2.5 2.5v9.75a2.5 2.5 0 0 0 2.5 2.5h.548A2.746 2.746 0 0 0 6.75 21.02 2.618 2.618 0 0 0 9.422 19h6.681a2.744 2.744 0 0 0 5.347-.23h.735A1.656 1.656 0 0 0 24 16.98v-2.808a1.937 1.937 0 0 0-.518-1.325ZM8.426 18.745a1.74 1.74 0 0 1-3.352 0 1.577 1.577 0 0 1 .015-1 1.738 1.738 0 0 1 3.322 0 1.578 1.578 0 0 1 .015 1ZM9.447 18a2.726 2.726 0 0 0-5.394-.255H3.5a1.502 1.502 0 0 1-1.5-1.5v-9.75a1.502 1.502 0 0 1 1.5-1.5h11a1.502 1.502 0 0 1 1.5 1.5V18Zm10.972.77a1.738 1.738 0 0 1-3.337 0 1.573 1.573 0 0 1 0-1 1.742 1.742 0 1 1 3.337 1ZM23 16.98c0 .569-.229.79-.815.79h-.735A2.73 2.73 0 0 0 17 16.165V10h1.986a.976.976 0 0 1 .838.314l2.927 3.214a.95.95 0 0 1 .249.644Zm-1.324-3.36a.512.512 0 0 1 .174.38h-3.306a.499.499 0 0 1-.544-.528V11h1.073a.76.76 0 0 1 .594.268Z">
+
+                    </path>
+                </svg>
+            </span>
+            <div class="font-base text-sm">Order by 3:00 pm. Delivers to <a style="color:#06c"> 40100</a>(Get Delivery Dates)</div></div>
+            <div class="font-semibold text-sm ml-2">Tue 14/05/2024 — Free</div></div>
+    </div>
 </body>
+<script>
+$(document).ready(function() {
+
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+
+        var macbookID = urlParams.get('id');
+        var macbookChip = urlParams.get('chip');
+        var macbookColor = urlParams.get('color');
+
+        $('#fetchDataButton').click(function() {
+            $.ajax({
+                url: 'http://localhost:8080/api/macbook/findById/' + macbookID,
+                method: 'GET',
+                success: function(macbook) {
+                    console.log('success');
+                    $('.macbook-title').append('<h1> Customise your ' + macbook.size + ' Macbook Pro - ' + macbook.color + '</h1>');
+                },
+                error: function(xhr, status, error) {
+                    console.error('Error fetching MacBook data:', error);
+                }
+            });
+        });
+});
+
+</script>
 </html>

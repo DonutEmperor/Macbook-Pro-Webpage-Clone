@@ -24,6 +24,21 @@ public class MacBookController {
         return "MacBook Created";
     }
 
+    @GetMapping("/findById/{id}")
+    public MacBook findByid(@PathVariable Integer id){
+        return macBookService.findByid(id);
+    }
+
+    @GetMapping("/findByChipAndSize")
+    public List<MacBook> fincByChipAndSize(@RequestParam String chip , @RequestParam String size){
+        return macBookService.findByChipAndSize(chip , size);
+    }
+
+    @GetMapping("/findBysize/{size}")
+    public List<MacBook> findBysize(@PathVariable String size){
+        return macBookService.findBysize(size);
+    }
+
     @GetMapping("/find/{chip}")
     public List<MacBook> findBychip(@PathVariable String chip){
         return macBookService.findBychip(chip);

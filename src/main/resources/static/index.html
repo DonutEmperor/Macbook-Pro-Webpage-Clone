@@ -171,24 +171,47 @@
             Filter by chip:
         </div>
         <div class="m-auto flex items-center justify-center">
-            <ul class="flex">
+            <ul id="14-inch-bar" class="flex">
                 <li class="mr-2.5">
-                    <button id="all-btn" style="background-color: #e8e8ed" class="rounded-3xl pl-5 pr-5 h-9 text-sm font-semibold">
+                    <button id="14-inch-all-btn" style="background-color: #e8e8ed" class="rounded-3xl pl-5 pr-5 h-9 text-sm font-semibold">
                         All
                     </button>
                 </li>
                 <li class="mr-2.5">
-                    <button id="m3-btn" style="background-color: #e8e8ed" class="rounded-3xl pl-5 pr-5 h-9 text-sm font-semibold">
+                    <button id="14-inch-m3-btn" style="background-color: #e8e8ed" class="rounded-3xl pl-5 pr-5 h-9 text-sm font-semibold">
                         M3
                     </button>
                 </li>
                 <li class="mr-2.5">
-                    <button id="m3-pro-btn" style="background-color: #e8e8ed" class="rounded-3xl pl-5 pr-5 h-9 text-sm font-semibold">
+                    <button id="14-inch-m3-pro-btn" style="background-color: #e8e8ed" class="rounded-3xl pl-5 pr-5 h-9 text-sm font-semibold">
                         M3 Pro
                     </button>
                 </li>
                 <li class="mr-2.5">
-                    <button id="m3-max-btn" style="background-color: #e8e8ed" class="rounded-3xl pl-5 pr-5 h-9 text-sm font-semibold">
+                    <button id="14-inch-m3-max-btn" style="background-color: #e8e8ed" class="rounded-3xl pl-5 pr-5 h-9 text-sm font-semibold">
+                        M3 Max
+                    </button>
+                </li>
+            </ul>
+
+            <ul id="16-inch-bar" class="flex">
+                <li class="mr-2.5">
+                    <button id="16-inch-all-btn" style="background-color: #e8e8ed" class="rounded-3xl pl-5 pr-5 h-9 text-sm font-semibold">
+                        All
+                    </button>
+                </li>
+<!--                <li class="mr-2.5">-->
+<!--                    <button id="16-inch-m3-btn" style="background-color: #e8e8ed" class="rounded-3xl pl-5 pr-5 h-9 text-sm font-semibold">-->
+<!--                        M3-->
+<!--                    </button>-->
+<!--                </li>-->
+                <li class="mr-2.5">
+                    <button id="16-inch-m3-pro-btn" style="background-color: #e8e8ed" class="rounded-3xl pl-5 pr-5 h-9 text-sm font-semibold">
+                        M3 Pro
+                    </button>
+                </li>
+                <li class="mr-2.5">
+                    <button id="16-inch-m3-max-btn" style="background-color: #e8e8ed" class="rounded-3xl pl-5 pr-5 h-9 text-sm font-semibold">
                         M3 Max
                     </button>
                 </li>
@@ -230,11 +253,41 @@
 </body>
 <script>
 $(document).ready(function(){
-    $('#all-btn').click();
-    $('#all-btn').click(function() {
+//14-INCH
+$('.14-button').click(function(){
+  $('#16-inch-bar').hide();
+  $('#14-inch-bar').show();
+  $('.grid.grid-cols-3.gap-4').empty();
+  $(this).addClass("border-2");
+  $(this).addClass("border-blue-600");
+  $(".16-button").removeClass("border-2");
+  $(".16-button").removeClass("border-blue-600");
+
+  $('#14-inch-all-btn').click();
+
+    //attach click event listener to all btn
+    $('#14-inch-all-btn').click(function() {
+        $(this).css({
+            "background-color": "#1d1d1f",
+        });
+        $(this).addClass("text-white");
+        $("#14-inch-m3-max-btn").removeClass("text-white");
+        $("#14-inch-m3-max-btn").css({
+            "background-color": "#e8e8ed",
+        });
+        $("#14-inch-m3-pro-btn").removeClass("text-white");
+        $("#14-inch-m3-pro-btn").css({
+            "background-color": "#e8e8ed",
+        });
+        $("#14-inch-m3-btn").removeClass("text-white");
+        $("#14-inch-m3-btn").css({
+            "background-color": "#e8e8ed",
+        });
+
         $('.grid.grid-cols-3.gap-4').empty();
+
          $.ajax({
-        url: 'http://localhost:8080/api/macbook/getAll',
+        url: 'http://localhost:8080/api/macbook/findBysize/14-inch',
         method: 'GET',
             success: function(data) {
 
@@ -296,10 +349,10 @@ $(document).ready(function(){
                         '<span id="product-color-' + count + '" class="product-color text-xs font-normal" style="color:#1d1d1f">' + macbook.color + '</span>'+
                         '<ul class="pt-2 flex">'+
                         '<li class="pr-2">'+
-                        '<input id="inline-radio-1" type="radio" value="" name="inline-radio-group" class="w-8 h-8">'+
+                        '<input id="color-radio-' + count + '" type="radio" value="" name="inline-radio-group" class="color-radio w-8 h-8">'+
                         '</li>'+
                         '<li class="pr-2">'+
-                        '<input id="inline-radio-2" type="radio" value="" name="inline-radio-group" class="w-8 h-8">'+
+                        '<input id="color-radio-' + count + '" type="radio" value="" name="inline-radio-group" class="color-radio w-8 h-8">'+
                         '</li>'+
                         '</ul>'+
                         '<img id="chip-' + count + '" class="pt-1 pb-2.5" height="51" width="51" src="' + chipURL + '"/>'+
@@ -312,7 +365,7 @@ $(document).ready(function(){
                         '<a class="pt-1.5 text-sm font-normal" style="color:#06c">Explore monthly instalment options </a>'+
                         '</div>'+
                         '<div class="pt-5 mb-6 mt-0.5"><div class="font-semibold text-sm">Add a trade-in</div><div class="font-normal text-sm">Get credit towards a new Mac when you trade in your eligible computer. Or recycle it for free.**</div><a class="pt-1.5 text-sm font-normal" style="color:#06c">Get Started</a></div>'+
-                        '<button id="select-button-' + count + '" class="select-button w-full px-4 py-2 text-white rounded-full shadow-sm font-normal text-sm min-w min-w-11" style="background-color:#0071e3">Select</button>'+
+                        '<button onclick="selectBox(this)" id="select-button-' + count + '" class="select-button w-full px-4 py-2 text-white rounded-full shadow-sm font-normal text-sm min-w min-w-11" style="background-color:#0071e3">Select</button>'+
                         '<div class="pt-6"><div class="font-semibold text-sm">Need a moment?</div><div class="font-normal text-sm">Keep all your selections by saving this device to Your Saves, then come back anytime and pick up right where you left off.                                </div><a class="pt-1.5 text-sm font-normal" style="color:#06c">Save for later</a></div>'+
                         '<div class="pt-5"><div class="pt-4 flex items-center justify-start"><span class="mr-2"><svg class="as-svgicon-rtl-mirrored as-svgicon as-svgicon-boxtruck as-svgicon-reduced as-svgicon-boxtruckreduced" viewBox="0 0 25 25" role="img" aria-hidden="true" width="25px" height="25px"><path fill="none" d="M0 0h25v25H0z"></path><path fill="#1d1d1f" d="m23.482 12.847-2.92-3.209A1.947 1.947 0 0 0 18.985 9H17V6.495a2.5 2.5 0 0 0-2.5-2.5h-11a2.5 2.5 0 0 0-2.5 2.5v9.75a2.5 2.5 0 0 0 2.5 2.5h.548A2.746 2.746 0 0 0 6.75 21.02 2.618 2.618 0 0 0 9.422 19h6.681a2.744 2.744 0 0 0 5.347-.23h.735A1.656 1.656 0 0 0 24 16.98v-2.808a1.937 1.937 0 0 0-.518-1.325ZM8.426 18.745a1.74 1.74 0 0 1-3.352 0 1.577 1.577 0 0 1 .015-1 1.738 1.738 0 0 1 3.322 0 1.578 1.578 0 0 1 .015 1ZM9.447 18a2.726 2.726 0 0 0-5.394-.255H3.5a1.502 1.502 0 0 1-1.5-1.5v-9.75a1.502 1.502 0 0 1 1.5-1.5h11a1.502 1.502 0 0 1 1.5 1.5V18Zm10.972.77a1.738 1.738 0 0 1-3.337 0 1.573 1.573 0 0 1 0-1 1.742 1.742 0 1 1 3.337 1ZM23 16.98c0 .569-.229.79-.815.79h-.735A2.73 2.73 0 0 0 17 16.165V10h1.986a.976.976 0 0 1 .838.314l2.927 3.214a.95.95 0 0 1 .249.644Zm-1.324-3.36a.512.512 0 0 1 .174.38h-3.306a.499.499 0 0 1-.544-.528V11h1.073a.76.76 0 0 1 .594.268Z"></path></svg></span><div class="font-base text-sm">Order by 3:00 pm. Delivers to <a style="color:#06c"> 40100</a>(Get Delivery Dates)</div></div><div class="font-semibold text-sm ml-2">Tue 14/05/2024 — Free</div></div>'+
                         '</div>'
@@ -330,6 +383,8 @@ $(document).ready(function(){
 
                     //Set Data Value
                     $('#chip-' + count).data('value', chip);
+                    $('#color-radio-' + count).data('value', macbookColor);
+                    $('#select-button-' + count).data('value', macbook.id + "-" + chip + "-" + macbookColor);
 
                     count++;
                 });
@@ -340,10 +395,29 @@ $(document).ready(function(){
         });
     });
 
-    $('#m3-btn').click(function() {
+    //Attach click event listener to m3 btn
+    $('#14-inch-m3-btn').click(function() {
+
+        $(this).css({
+            "background-color": "#1d1d1f",
+        });
+        $(this).addClass("text-white");
+        $("#14-inch-m3-max-btn").removeClass("text-white");
+        $("#14-inch-m3-max-btn").css({
+            "background-color": "#e8e8ed",
+        });
+        $("#14-inch-m3-pro-btn").removeClass("text-white");
+        $("#14-inch-m3-pro-btn").css({
+            "background-color": "#e8e8ed",
+        });
+        $("#14-inch-all-btn").removeClass("text-white");
+        $("#14-inch-all-btn").css({
+            "background-color": "#e8e8ed",
+        });
+
     $('.grid.grid-cols-3.gap-4').empty();
          $.ajax({
-        url: 'http://localhost:8080/api/macbook/find/m3',
+        url: 'http://localhost:8080/api/macbook/findByChipAndSize?chip=M3&size=14-inch',
         method: 'GET',
             success: function(data) {
 
@@ -405,10 +479,10 @@ $(document).ready(function(){
                         '<span id="product-color-' + count + '" class="product-color text-xs font-normal" style="color:#1d1d1f">' + macbook.color + '</span>'+
                         '<ul class="pt-2 flex">'+
                         '<li class="pr-2">'+
-                        '<input id="inline-radio-1" type="radio" value="" name="inline-radio-group" class="w-8 h-8">'+
+                        '<input id="color-radio-' + count + '" type="radio" value="" name="inline-radio-group" class="color-radio w-8 h-8">'+
                         '</li>'+
                         '<li class="pr-2">'+
-                        '<input id="inline-radio-2" type="radio" value="" name="inline-radio-group" class="w-8 h-8">'+
+                        '<input id="color-radio-' + count + '" type="radio" value="" name="inline-radio-group" class="color-radio w-8 h-8">'+
                         '</li>'+
                         '</ul>'+
                         '<img id="chip-' + count + '" class="pt-1 pb-2.5" height="51" width="51" src="' + chipURL + '"/>'+
@@ -421,7 +495,7 @@ $(document).ready(function(){
                         '<a class="pt-1.5 text-sm font-normal" style="color:#06c">Explore monthly instalment options </a>'+
                         '</div>'+
                         '<div class="pt-5 mb-6 mt-0.5"><div class="font-semibold text-sm">Add a trade-in</div><div class="font-normal text-sm">Get credit towards a new Mac when you trade in your eligible computer. Or recycle it for free.**</div><a class="pt-1.5 text-sm font-normal" style="color:#06c">Get Started</a></div>'+
-                        '<button id="select-button-' + count + '" class="select-button w-full px-4 py-2 text-white rounded-full shadow-sm font-normal text-sm min-w min-w-11" style="background-color:#0071e3">Select</button>'+
+                        '<button onclick="selectBox(this)" id="select-button-' + count + '" class="select-button w-full px-4 py-2 text-white rounded-full shadow-sm font-normal text-sm min-w min-w-11" style="background-color:#0071e3">Select</button>'+
                         '<div class="pt-6"><div class="font-semibold text-sm">Need a moment?</div><div class="font-normal text-sm">Keep all your selections by saving this device to Your Saves, then come back anytime and pick up right where you left off.                                </div><a class="pt-1.5 text-sm font-normal" style="color:#06c">Save for later</a></div>'+
                         '<div class="pt-5"><div class="pt-4 flex items-center justify-start"><span class="mr-2"><svg class="as-svgicon-rtl-mirrored as-svgicon as-svgicon-boxtruck as-svgicon-reduced as-svgicon-boxtruckreduced" viewBox="0 0 25 25" role="img" aria-hidden="true" width="25px" height="25px"><path fill="none" d="M0 0h25v25H0z"></path><path fill="#1d1d1f" d="m23.482 12.847-2.92-3.209A1.947 1.947 0 0 0 18.985 9H17V6.495a2.5 2.5 0 0 0-2.5-2.5h-11a2.5 2.5 0 0 0-2.5 2.5v9.75a2.5 2.5 0 0 0 2.5 2.5h.548A2.746 2.746 0 0 0 6.75 21.02 2.618 2.618 0 0 0 9.422 19h6.681a2.744 2.744 0 0 0 5.347-.23h.735A1.656 1.656 0 0 0 24 16.98v-2.808a1.937 1.937 0 0 0-.518-1.325ZM8.426 18.745a1.74 1.74 0 0 1-3.352 0 1.577 1.577 0 0 1 .015-1 1.738 1.738 0 0 1 3.322 0 1.578 1.578 0 0 1 .015 1ZM9.447 18a2.726 2.726 0 0 0-5.394-.255H3.5a1.502 1.502 0 0 1-1.5-1.5v-9.75a1.502 1.502 0 0 1 1.5-1.5h11a1.502 1.502 0 0 1 1.5 1.5V18Zm10.972.77a1.738 1.738 0 0 1-3.337 0 1.573 1.573 0 0 1 0-1 1.742 1.742 0 1 1 3.337 1ZM23 16.98c0 .569-.229.79-.815.79h-.735A2.73 2.73 0 0 0 17 16.165V10h1.986a.976.976 0 0 1 .838.314l2.927 3.214a.95.95 0 0 1 .249.644Zm-1.324-3.36a.512.512 0 0 1 .174.38h-3.306a.499.499 0 0 1-.544-.528V11h1.073a.76.76 0 0 1 .594.268Z"></path></svg></span><div class="font-base text-sm">Order by 3:00 pm. Delivers to <a style="color:#06c"> 40100</a>(Get Delivery Dates)</div></div><div class="font-semibold text-sm ml-2">Tue 14/05/2024 — Free</div></div>'+
                         '</div>'
@@ -439,6 +513,8 @@ $(document).ready(function(){
 
                     //Set Data Value
                     $('#chip-' + count).data('value', chip);
+                    $('#color-radio-' + count).data('value', macbookColor);
+                    $('#select-button-' + count).data('value', macbook.id + "-" + chip + "-" + macbookColor);
 
                     count++;
                 });
@@ -449,100 +525,676 @@ $(document).ready(function(){
         });
     });
 
+    //Attach click event listener to m3 pro btn
+    $('#14-inch-m3-pro-btn').click(function() {
 
-    $(".14-button").click(function(){
-      $(this).addClass("border-2");
-      $(this).addClass("border-blue-600");
-      $(".16-button").removeClass("border-2");
-      $(".16-button").removeClass("border-blue-600");
+        $(this).css({
+            "background-color": "#1d1d1f",
+        });
+        $(this).addClass("text-white");
+        $("#14-inch-m3-max-btn").removeClass("text-white");
+        $("#14-inch-m3-max-btn").css({
+            "background-color": "#e8e8ed",
+        });
+        $("#14-inch-all-btn").removeClass("text-white");
+        $("#14-inch-all-btn").css({
+            "background-color": "#e8e8ed",
+        });
+        $("#14-inch-m3-btn").removeClass("text-white");
+        $("#14-inch-m3-btn").css({
+            "background-color": "#e8e8ed",
+        });
+
+    $('.grid.grid-cols-3.gap-4').empty();
+         $.ajax({
+        url: 'http://localhost:8080/api/macbook/findByChipAndSize?chip=M3%20Pro&size=14-inch',
+        method: 'GET',
+            success: function(data) {
+
+            // Select the existing grid container
+            var gridContainer = $('.grid.grid-cols-3.gap-4');
+            let count = 1;
+
+                // Loop through each MacBook data item
+                data.forEach(function(macbook) {
+
+                    //Determine the macbook image to be displayed
+                    var macURL;
+                    var macbookColor = macbook.color;
+                    if(macbook.color=== "Space Grey"){
+                        macURL = "https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/mbp14-spacegray-select-202310?wid=904&hei=840&fmt=jpeg&qlt=90&.v=1697230830200";
+                    }else if(macbook.color=== "Space Black"){
+                        macURL = "https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/mbp14-m3-max-pro-spaceblack-select-202310?wid=904&hei=840&fmt=jpeg&qlt=90&.v=1697230830118";
+                    }else if(macbook.color=== "Silver"){
+                        macURL = "https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/mbp14-silver-select-202310?wid=904&hei=840&fmt=jpeg&qlt=90&.v=1697230830269";
+                    }
+
+                    //Determine the chip image to be displayed
+                    var chipURL;
+                    var chip = macbook.chip;
+
+                    if(chip=== "M3"){
+                       chipURL = "https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/mbp-m3-icon-202310?wid=102&hei=102&fmt=png-alpha&.v=1697039562647";
+                    }else if(chip=== "M3 Pro"){
+                       chipURL = "https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/mbp-m3-pro-icon-202310?wid=102&hei=102&fmt=png-alpha&.v=1697039562659";
+                    }else if(chip=== "M3 Max"){
+                       chipURL = "https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/mbp-m3-max-icon-202310?wid=102&hei=102&fmt=png-alpha&.v=1697039562691";
+                    }
+
+                    // Processor Title
+                    var processorTitle = macbook.processorTitle.split('\n').join('<br>');
+
+                    // Specification
+                    var specificationItems = macbook.specification.split('\n');
+                    var specificationList = '<ul class="product-specification">';
+                    specificationItems.forEach(function(item) {
+                        specificationList += '<li class="mt-1.5 text-sm font-normal">' + item + '</li>';
+                    });
+                    specificationList += '</ul>';
+
+                    // Default Price
+                    var price = macbook.unitPrice.toLocaleString('en-US', {
+                        minimumFractionDigits: 2,
+                        maximumFractionDigits: 2
+                    });
+
+                    // Installment Price
+                    var installmentPrice = macbook.installmentPrice;
+
+                    // Create the card item for each MacBook
+                    var item = $('<div id="item-' + count + '" class="item max-w-72 rounded overflow-hidden"></div>');
+                    item.append(
+                        '<div class="px-4 pb-5">' +
+                        '<img width="452" height="420" src="'+  macURL +'">' +
+                        '<span id="product-color-' + count + '" class="product-color text-xs font-normal" style="color:#1d1d1f">' + macbook.color + '</span>'+
+                        '<ul class="pt-2 flex">'+
+                        '<li class="pr-2">'+
+                        '<input id="color-radio-' + count + '" type="radio" value="" name="inline-radio-group" class="color-radio w-8 h-8">'+
+                        '</li>'+
+                        '<li class="pr-2">'+
+                        '<input id="color-radio-' + count + '" type="radio" value="" name="inline-radio-group" class="color-radio w-8 h-8">'+
+                        '</li>'+
+                        '</ul>'+
+                        '<img id="chip-' + count + '" class="pt-1 pb-2.5" height="51" width="51" src="' + chipURL + '"/>'+
+                        '<h2 id="processor-title-' + count + '" class="processor-title font-semibold text-xl"></h2>'+
+                        '<div id="product-specification-' + count + '" class="product-specification" pt-5"></div>'+
+                        '<div class="pt-5">'+
+                        '<span id="price-' + count + '" class="block price font-semibold text-2xl"></span>'+
+                        '<span class="block py-2.5 text-xs font-normal">or</span>'+
+                        '<span id="price-month-' + count + '" class="block price-month font-semibold text-2xl"></span>'+
+                        '<a class="pt-1.5 text-sm font-normal" style="color:#06c">Explore monthly instalment options </a>'+
+                        '</div>'+
+                        '<div class="pt-5 mb-6 mt-0.5"><div class="font-semibold text-sm">Add a trade-in</div><div class="font-normal text-sm">Get credit towards a new Mac when you trade in your eligible computer. Or recycle it for free.**</div><a class="pt-1.5 text-sm font-normal" style="color:#06c">Get Started</a></div>'+
+                        '<button onclick="selectBox(this)" id="select-button-' + count + '" class="select-button w-full px-4 py-2 text-white rounded-full shadow-sm font-normal text-sm min-w min-w-11" style="background-color:#0071e3">Select</button>'+
+                        '<div class="pt-6"><div class="font-semibold text-sm">Need a moment?</div><div class="font-normal text-sm">Keep all your selections by saving this device to Your Saves, then come back anytime and pick up right where you left off.                                </div><a class="pt-1.5 text-sm font-normal" style="color:#06c">Save for later</a></div>'+
+                        '<div class="pt-5"><div class="pt-4 flex items-center justify-start"><span class="mr-2"><svg class="as-svgicon-rtl-mirrored as-svgicon as-svgicon-boxtruck as-svgicon-reduced as-svgicon-boxtruckreduced" viewBox="0 0 25 25" role="img" aria-hidden="true" width="25px" height="25px"><path fill="none" d="M0 0h25v25H0z"></path><path fill="#1d1d1f" d="m23.482 12.847-2.92-3.209A1.947 1.947 0 0 0 18.985 9H17V6.495a2.5 2.5 0 0 0-2.5-2.5h-11a2.5 2.5 0 0 0-2.5 2.5v9.75a2.5 2.5 0 0 0 2.5 2.5h.548A2.746 2.746 0 0 0 6.75 21.02 2.618 2.618 0 0 0 9.422 19h6.681a2.744 2.744 0 0 0 5.347-.23h.735A1.656 1.656 0 0 0 24 16.98v-2.808a1.937 1.937 0 0 0-.518-1.325ZM8.426 18.745a1.74 1.74 0 0 1-3.352 0 1.577 1.577 0 0 1 .015-1 1.738 1.738 0 0 1 3.322 0 1.578 1.578 0 0 1 .015 1ZM9.447 18a2.726 2.726 0 0 0-5.394-.255H3.5a1.502 1.502 0 0 1-1.5-1.5v-9.75a1.502 1.502 0 0 1 1.5-1.5h11a1.502 1.502 0 0 1 1.5 1.5V18Zm10.972.77a1.738 1.738 0 0 1-3.337 0 1.573 1.573 0 0 1 0-1 1.742 1.742 0 1 1 3.337 1ZM23 16.98c0 .569-.229.79-.815.79h-.735A2.73 2.73 0 0 0 17 16.165V10h1.986a.976.976 0 0 1 .838.314l2.927 3.214a.95.95 0 0 1 .249.644Zm-1.324-3.36a.512.512 0 0 1 .174.38h-3.306a.499.499 0 0 1-.544-.528V11h1.073a.76.76 0 0 1 .594.268Z"></path></svg></span><div class="font-base text-sm">Order by 3:00 pm. Delivers to <a style="color:#06c"> 40100</a>(Get Delivery Dates)</div></div><div class="font-semibold text-sm ml-2">Tue 14/05/2024 — Free</div></div>'+
+                        '</div>'
+                    );
+
+                    // Append item to the grid container
+                    gridContainer.append(item);
+
+                    //Set the text or append element to respective element
+                    $('#processor-title-' + count).append('<h2>' + processorTitle + '</h2>');
+                    $('#product-color-' + count).text(macbookColor);
+                    $('#product-specification-' + count).append(specificationList);
+                    $('#price-' + count).text('RM ' + price);
+                    $('#price-month-' + count).text('RM ' +  installmentPrice  + '/mo. for 24 mo.*');
+
+                    //Set Data Value
+                    $('#chip-' + count).data('value', chip);
+                    $('#color-radio-' + count).data('value', macbookColor);
+                    $('#select-button-' + count).data('value', macbook.id + "-" + chip + "-" + macbookColor);
+
+                    count++;
+                });
+            },
+            error: function(xhr, status, error) {
+                console.error('Error fetching MacBook data:', error);
+            }
+        });
     });
 
-    $(".16-button").click(function(){
+    //Attach click event listener to m3 max btn
+    $('#14-inch-m3-max-btn').click(function() {
+
+        $(this).css({
+            "background-color": "#1d1d1f",
+        });
+        $(this).addClass("text-white");
+        $("#14-inch-all-btn").removeClass("text-white");
+        $("#14-inch-all-btn").css({
+            "background-color": "#e8e8ed",
+        });
+        $("#14-inch-m3-pro-btn").removeClass("text-white");
+        $("#14-inch-m3-pro-btn").css({
+            "background-color": "#e8e8ed",
+        });
+        $("#14-inch-m3-btn").removeClass("text-white");
+        $("#14-inch-m3-btn").css({
+            "background-color": "#e8e8ed",
+        });
+
+    $('.grid.grid-cols-3.gap-4').empty();
+         $.ajax({
+        url: 'http://localhost:8080/api/macbook/findByChipAndSize?chip=M3%20Max&size=14-inch',
+        method: 'GET',
+            success: function(data) {
+
+            // Select the existing grid container
+            var gridContainer = $('.grid.grid-cols-3.gap-4');
+            let count = 1;
+
+                // Loop through each MacBook data item
+                data.forEach(function(macbook) {
+
+                    //Determine the macbook image to be displayed
+                    var macURL;
+                    var macbookColor = macbook.color;
+                    if(macbook.color=== "Space Grey"){
+                        macURL = "https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/mbp14-spacegray-select-202310?wid=904&hei=840&fmt=jpeg&qlt=90&.v=1697230830200";
+                    }else if(macbook.color=== "Space Black"){
+                        macURL = "https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/mbp14-m3-max-pro-spaceblack-select-202310?wid=904&hei=840&fmt=jpeg&qlt=90&.v=1697230830118";
+                    }else if(macbook.color=== "Silver"){
+                        macURL = "https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/mbp14-silver-select-202310?wid=904&hei=840&fmt=jpeg&qlt=90&.v=1697230830269";
+                    }
+
+                    //Determine the chip image to be displayed
+                    var chipURL;
+                    var chip = macbook.chip;
+
+                    if(chip=== "M3"){
+                       chipURL = "https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/mbp-m3-icon-202310?wid=102&hei=102&fmt=png-alpha&.v=1697039562647";
+                    }else if(chip=== "M3 Pro"){
+                       chipURL = "https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/mbp-m3-pro-icon-202310?wid=102&hei=102&fmt=png-alpha&.v=1697039562659";
+                    }else if(chip=== "M3 Max"){
+                       chipURL = "https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/mbp-m3-max-icon-202310?wid=102&hei=102&fmt=png-alpha&.v=1697039562691";
+                    }
+
+                    // Processor Title
+                    var processorTitle = macbook.processorTitle.split('\n').join('<br>');
+
+                    // Specification
+                    var specificationItems = macbook.specification.split('\n');
+                    var specificationList = '<ul class="product-specification">';
+                    specificationItems.forEach(function(item) {
+                        specificationList += '<li class="mt-1.5 text-sm font-normal">' + item + '</li>';
+                    });
+                    specificationList += '</ul>';
+
+                    // Default Price
+                    var price = macbook.unitPrice.toLocaleString('en-US', {
+                        minimumFractionDigits: 2,
+                        maximumFractionDigits: 2
+                    });
+
+                    // Installment Price
+                    var installmentPrice = macbook.installmentPrice;
+
+                    // Create the card item for each MacBook
+                    var item = $('<div id="item-' + count + '" class="item max-w-72 rounded overflow-hidden"></div>');
+                    item.append(
+                        '<div class="px-4 pb-5">' +
+                        '<img width="452" height="420" src="'+  macURL +'">' +
+                        '<span id="product-color-' + count + '" class="product-color text-xs font-normal" style="color:#1d1d1f">' + macbook.color + '</span>'+
+                        '<ul class="pt-2 flex">'+
+                        '<li class="pr-2">'+
+                        '<input id="color-radio-' + count + '" type="radio" value="" name="inline-radio-group" class="color-radio w-8 h-8">'+
+                        '</li>'+
+                        '<li class="pr-2">'+
+                        '<input id="color-radio-' + count + '" type="radio" value="" name="inline-radio-group" class="color-radio w-8 h-8">'+
+                        '</li>'+
+                        '</ul>'+
+                        '<img id="chip-' + count + '" class="pt-1 pb-2.5" height="51" width="51" src="' + chipURL + '"/>'+
+                        '<h2 id="processor-title-' + count + '" class="processor-title font-semibold text-xl"></h2>'+
+                        '<div id="product-specification-' + count + '" class="product-specification" pt-5"></div>'+
+                        '<div class="pt-5">'+
+                        '<span id="price-' + count + '" class="block price font-semibold text-2xl"></span>'+
+                        '<span class="block py-2.5 text-xs font-normal">or</span>'+
+                        '<span id="price-month-' + count + '" class="block price-month font-semibold text-2xl"></span>'+
+                        '<a class="pt-1.5 text-sm font-normal" style="color:#06c">Explore monthly instalment options </a>'+
+                        '</div>'+
+                        '<div class="pt-5 mb-6 mt-0.5"><div class="font-semibold text-sm">Add a trade-in</div><div class="font-normal text-sm">Get credit towards a new Mac when you trade in your eligible computer. Or recycle it for free.**</div><a class="pt-1.5 text-sm font-normal" style="color:#06c">Get Started</a></div>'+
+                        '<button onclick="selectBox(this)" id="select-button-' + count + '" class="select-button w-full px-4 py-2 text-white rounded-full shadow-sm font-normal text-sm min-w min-w-11" style="background-color:#0071e3">Select</button>'+
+                        '<div class="pt-6"><div class="font-semibold text-sm">Need a moment?</div><div class="font-normal text-sm">Keep all your selections by saving this device to Your Saves, then come back anytime and pick up right where you left off.                                </div><a class="pt-1.5 text-sm font-normal" style="color:#06c">Save for later</a></div>'+
+                        '<div class="pt-5"><div class="pt-4 flex items-center justify-start"><span class="mr-2"><svg class="as-svgicon-rtl-mirrored as-svgicon as-svgicon-boxtruck as-svgicon-reduced as-svgicon-boxtruckreduced" viewBox="0 0 25 25" role="img" aria-hidden="true" width="25px" height="25px"><path fill="none" d="M0 0h25v25H0z"></path><path fill="#1d1d1f" d="m23.482 12.847-2.92-3.209A1.947 1.947 0 0 0 18.985 9H17V6.495a2.5 2.5 0 0 0-2.5-2.5h-11a2.5 2.5 0 0 0-2.5 2.5v9.75a2.5 2.5 0 0 0 2.5 2.5h.548A2.746 2.746 0 0 0 6.75 21.02 2.618 2.618 0 0 0 9.422 19h6.681a2.744 2.744 0 0 0 5.347-.23h.735A1.656 1.656 0 0 0 24 16.98v-2.808a1.937 1.937 0 0 0-.518-1.325ZM8.426 18.745a1.74 1.74 0 0 1-3.352 0 1.577 1.577 0 0 1 .015-1 1.738 1.738 0 0 1 3.322 0 1.578 1.578 0 0 1 .015 1ZM9.447 18a2.726 2.726 0 0 0-5.394-.255H3.5a1.502 1.502 0 0 1-1.5-1.5v-9.75a1.502 1.502 0 0 1 1.5-1.5h11a1.502 1.502 0 0 1 1.5 1.5V18Zm10.972.77a1.738 1.738 0 0 1-3.337 0 1.573 1.573 0 0 1 0-1 1.742 1.742 0 1 1 3.337 1ZM23 16.98c0 .569-.229.79-.815.79h-.735A2.73 2.73 0 0 0 17 16.165V10h1.986a.976.976 0 0 1 .838.314l2.927 3.214a.95.95 0 0 1 .249.644Zm-1.324-3.36a.512.512 0 0 1 .174.38h-3.306a.499.499 0 0 1-.544-.528V11h1.073a.76.76 0 0 1 .594.268Z"></path></svg></span><div class="font-base text-sm">Order by 3:00 pm. Delivers to <a style="color:#06c"> 40100</a>(Get Delivery Dates)</div></div><div class="font-semibold text-sm ml-2">Tue 14/05/2024 — Free</div></div>'+
+                        '</div>'
+                    );
+
+                    // Append item to the grid container
+                    gridContainer.append(item);
+
+                    //Set the text or append element to respective element
+                    $('#processor-title-' + count).append('<h2>' + processorTitle + '</h2>');
+                    $('#product-color-' + count).text(macbookColor);
+                    $('#product-specification-' + count).append(specificationList);
+                    $('#price-' + count).text('RM ' + price);
+                    $('#price-month-' + count).text('RM ' +  installmentPrice  + '/mo. for 24 mo.*');
+
+                    //Set Data Value
+                    $('#chip-' + count).data('value', chip);
+                    $('#color-radio-' + count).data('value', macbookColor);
+                    $('#select-button-' + count).data('value', macbook.id + "-" + chip + "-" + macbookColor);
+
+                    count++;
+                });
+            },
+            error: function(xhr, status, error) {
+                console.error('Error fetching MacBook data:', error);
+            }
+        });
+    });
+});
+
+//16-INCH
+$('.16-button').click(function(){
+      $('#14-inch-bar').hide();
+      $('#16-inch-bar').show();
+      $('.grid.grid-cols-3.gap-4').empty();
       $(this).addClass("border-2");
       $(this).addClass("border-blue-600");
       $(".14-button").removeClass("border-2");
       $(".14-button").removeClass("border-blue-600");
-    });
 
-    $(".14-button").click();
+      $('#16-inch-all-btn').click();
 
-    $("#all-btn").click(function(){
+       //attach click event listener to all btn
+        $('#16-inch-all-btn').click(function() {
         $(this).css({
             "background-color": "#1d1d1f",
         });
         $(this).addClass("text-white");
-        $("#m3-max-btn").removeClass("text-white");
-        $("#m3-max-btn").css({
+        $("#16-inch-m3-max-btn").removeClass("text-white");
+        $("#16-inch-m3-max-btn").css({
             "background-color": "#e8e8ed",
         });
-        $("#m3-pro-btn").removeClass("text-white");
-        $("#m3-pro-btn").css({
+        $("#16-inch-m3-pro-btn").removeClass("text-white");
+        $("#16-inch-m3-pro-btn").css({
             "background-color": "#e8e8ed",
         });
-        $("#m3-btn").removeClass("text-white");
-        $("#m3-btn").css({
-            "background-color": "#e8e8ed",
-        });
-    });
 
-    $("#m3-max-btn").click(function(){
+        $('.grid.grid-cols-3.gap-4').empty();
+
+         $.ajax({
+        url: 'http://localhost:8080/api/macbook/findBysize/16-inch',
+        method: 'GET',
+            success: function(data) {
+
+            // Select the existing grid container
+            var gridContainer = $('.grid.grid-cols-3.gap-4');
+            let count = 1;
+
+                // Loop through each MacBook data item
+                data.forEach(function(macbook) {
+
+                    //Determine the macbook image to be displayed
+                    var macURL;
+                    var macbookColor = macbook.color;
+                    if(macbook.color=== "Space Grey"){
+                        macURL = "https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/mbp14-spacegray-select-202310?wid=904&hei=840&fmt=jpeg&qlt=90&.v=1697230830200";
+                    }else if(macbook.color=== "Space Black"){
+                        macURL = "https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/mbp16-spaceblack-select-202310?wid=904&hei=840&fmt=jpeg&qlt=90&.v=1697311054290";
+                    }else if(macbook.color=== "Silver"){
+                        macURL = "https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/mbp16-spaceblack-select-202310?wid=904&hei=840&fmt=jpeg&qlt=90&.v=1697311054290";
+                    }
+
+                    //Determine the chip image to be displayed
+                    var chipURL;
+                    var chip = macbook.chip;
+
+                    if(chip=== "M3"){
+                       chipURL = "https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/mbp-m3-icon-202310?wid=102&hei=102&fmt=png-alpha&.v=1697039562647";
+                    }else if(chip=== "M3 Pro"){
+                       chipURL = "https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/mbp-m3-pro-icon-202310?wid=102&hei=102&fmt=png-alpha&.v=1697039562659";
+                    }else if(chip=== "M3 Max"){
+                       chipURL = "https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/mbp-m3-max-icon-202310?wid=102&hei=102&fmt=png-alpha&.v=1697039562691";
+                    }
+
+                    // Processor Title
+                    var processorTitle = macbook.processorTitle.split('\n').join('<br>');
+
+                    // Specification
+                    var specificationItems = macbook.specification.split('\n');
+                    var specificationList = '<ul class="product-specification">';
+                    specificationItems.forEach(function(item) {
+                        specificationList += '<li class="mt-1.5 text-sm font-normal">' + item + '</li>';
+                    });
+                    specificationList += '</ul>';
+
+                    // Default Price
+                    var price = macbook.unitPrice.toLocaleString('en-US', {
+                        minimumFractionDigits: 2,
+                        maximumFractionDigits: 2
+                    });
+
+                    // Installment Price
+                    var installmentPrice = macbook.installmentPrice;
+
+                    // Create the card item for each MacBook
+                    var item = $('<div id="item-' + count + '" class="item max-w-72 rounded overflow-hidden"></div>');
+                    item.append(
+                        '<div class="px-4 pb-5">' +
+                        '<img width="452" height="420" src="'+  macURL +'">' +
+                        '<span id="product-color-' + count + '" class="product-color text-xs font-normal" style="color:#1d1d1f">' + macbook.color + '</span>'+
+                        '<ul class="pt-2 flex">'+
+                        '<li class="pr-2">'+
+                        '<input id="color-radio-' + count + '" type="radio" value="" name="inline-radio-group" class="color-radio w-8 h-8">'+
+                        '</li>'+
+                        '<li class="pr-2">'+
+                        '<input id="color-radio-' + count + '" type="radio" value="" name="inline-radio-group" class="color-radio w-8 h-8">'+
+                        '</li>'+
+                        '</ul>'+
+                        '<img id="chip-' + count + '" class="pt-1 pb-2.5" height="51" width="51" src="' + chipURL + '"/>'+
+                        '<h2 id="processor-title-' + count + '" class="processor-title font-semibold text-xl"></h2>'+
+                        '<div id="product-specification-' + count + '" class="product-specification" pt-5"></div>'+
+                        '<div class="pt-5">'+
+                        '<span id="price-' + count + '" class="block price font-semibold text-2xl"></span>'+
+                        '<span class="block py-2.5 text-xs font-normal">or</span>'+
+                        '<span id="price-month-' + count + '" class="block price-month font-semibold text-2xl"></span>'+
+                        '<a class="pt-1.5 text-sm font-normal" style="color:#06c">Explore monthly instalment options </a>'+
+                        '</div>'+
+                        '<div class="pt-5 mb-6 mt-0.5"><div class="font-semibold text-sm">Add a trade-in</div><div class="font-normal text-sm">Get credit towards a new Mac when you trade in your eligible computer. Or recycle it for free.**</div><a class="pt-1.5 text-sm font-normal" style="color:#06c">Get Started</a></div>'+
+                        '<button onclick="selectBox(this)" id="select-button-' + count + '" class="select-button w-full px-4 py-2 text-white rounded-full shadow-sm font-normal text-sm min-w min-w-11" style="background-color:#0071e3">Select</button>'+
+                        '<div class="pt-6"><div class="font-semibold text-sm">Need a moment?</div><div class="font-normal text-sm">Keep all your selections by saving this device to Your Saves, then come back anytime and pick up right where you left off.                                </div><a class="pt-1.5 text-sm font-normal" style="color:#06c">Save for later</a></div>'+
+                        '<div class="pt-5"><div class="pt-4 flex items-center justify-start"><span class="mr-2"><svg class="as-svgicon-rtl-mirrored as-svgicon as-svgicon-boxtruck as-svgicon-reduced as-svgicon-boxtruckreduced" viewBox="0 0 25 25" role="img" aria-hidden="true" width="25px" height="25px"><path fill="none" d="M0 0h25v25H0z"></path><path fill="#1d1d1f" d="m23.482 12.847-2.92-3.209A1.947 1.947 0 0 0 18.985 9H17V6.495a2.5 2.5 0 0 0-2.5-2.5h-11a2.5 2.5 0 0 0-2.5 2.5v9.75a2.5 2.5 0 0 0 2.5 2.5h.548A2.746 2.746 0 0 0 6.75 21.02 2.618 2.618 0 0 0 9.422 19h6.681a2.744 2.744 0 0 0 5.347-.23h.735A1.656 1.656 0 0 0 24 16.98v-2.808a1.937 1.937 0 0 0-.518-1.325ZM8.426 18.745a1.74 1.74 0 0 1-3.352 0 1.577 1.577 0 0 1 .015-1 1.738 1.738 0 0 1 3.322 0 1.578 1.578 0 0 1 .015 1ZM9.447 18a2.726 2.726 0 0 0-5.394-.255H3.5a1.502 1.502 0 0 1-1.5-1.5v-9.75a1.502 1.502 0 0 1 1.5-1.5h11a1.502 1.502 0 0 1 1.5 1.5V18Zm10.972.77a1.738 1.738 0 0 1-3.337 0 1.573 1.573 0 0 1 0-1 1.742 1.742 0 1 1 3.337 1ZM23 16.98c0 .569-.229.79-.815.79h-.735A2.73 2.73 0 0 0 17 16.165V10h1.986a.976.976 0 0 1 .838.314l2.927 3.214a.95.95 0 0 1 .249.644Zm-1.324-3.36a.512.512 0 0 1 .174.38h-3.306a.499.499 0 0 1-.544-.528V11h1.073a.76.76 0 0 1 .594.268Z"></path></svg></span><div class="font-base text-sm">Order by 3:00 pm. Delivers to <a style="color:#06c"> 40100</a>(Get Delivery Dates)</div></div><div class="font-semibold text-sm ml-2">Tue 14/05/2024 — Free</div></div>'+
+                        '</div>'
+                    );
+
+                    // Append item to the grid container
+                    gridContainer.append(item);
+
+                    //Set the text or append element to respective element
+                    $('#processor-title-' + count).append('<h2>' + processorTitle + '</h2>');
+                    $('#product-color-' + count).text(macbookColor);
+                    $('#product-specification-' + count).append(specificationList);
+                    $('#price-' + count).text('RM ' + price);
+                    $('#price-month-' + count).text('RM ' +  installmentPrice  + '/mo. for 24 mo.*');
+
+                    //Set Data Value
+                    $('#chip-' + count).data('value', chip);
+                    $('#color-radio-' + count).data('value', macbookColor);
+                    $('#select-button-' + count).data('value', macbook.id + "-" + chip + "-" + macbookColor);
+
+                    count++;
+                });
+            },
+            error: function(xhr, status, error) {
+                console.error('Error fetching MacBook data:', error);
+            }
+        });
+
+              //attach click event listener to all btn
+        $('#16-inch-m3-pro-btn').click(function() {
         $(this).css({
             "background-color": "#1d1d1f",
         });
         $(this).addClass("text-white");
-        $("#all-btn").removeClass("text-white");
-        $("#all-btn").css({
+        $("#16-inch-m3-max-btn").removeClass("text-white");
+        $("#16-inch-m3-max-btn").css({
             "background-color": "#e8e8ed",
         });
-        $("#m3-pro-btn").removeClass("text-white");
-        $("#m3-pro-btn").css({
+        $("#16-inch-all-btn").removeClass("text-white");
+        $("#16-inch-all-btn").css({
             "background-color": "#e8e8ed",
         });
-        $("#m3-btn").removeClass("text-white");
-        $("#m3-btn").css({
-            "background-color": "#e8e8ed",
-        });
-    });
 
-    $("#m3-btn").click(function(){
+        $('.grid.grid-cols-3.gap-4').empty();
+
+         $.ajax({
+        url: 'http://localhost:8080/api/macbook/findByChipAndSize?chip=M3%20Pro&size=16-inch',
+        method: 'GET',
+            success: function(data) {
+
+            // Select the existing grid container
+            var gridContainer = $('.grid.grid-cols-3.gap-4');
+            let count = 1;
+
+                // Loop through each MacBook data item
+                data.forEach(function(macbook) {
+
+                    //Determine the macbook image to be displayed
+                    var macURL;
+                    var macbookColor = macbook.color;
+                    if(macbook.color=== "Space Grey"){
+                        macURL = "https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/mbp14-spacegray-select-202310?wid=904&hei=840&fmt=jpeg&qlt=90&.v=1697230830200";
+                    }else if(macbook.color=== "Space Black"){
+                        macURL = "https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/mbp16-spaceblack-select-202310?wid=904&hei=840&fmt=jpeg&qlt=90&.v=1697311054290";
+                    }else if(macbook.color=== "Silver"){
+                        macURL = "https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/mbp16-spaceblack-select-202310?wid=904&hei=840&fmt=jpeg&qlt=90&.v=1697311054290";
+                    }
+
+                    //Determine the chip image to be displayed
+                    var chipURL;
+                    var chip = macbook.chip;
+
+                    if(chip=== "M3"){
+                       chipURL = "https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/mbp-m3-icon-202310?wid=102&hei=102&fmt=png-alpha&.v=1697039562647";
+                    }else if(chip=== "M3 Pro"){
+                       chipURL = "https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/mbp-m3-pro-icon-202310?wid=102&hei=102&fmt=png-alpha&.v=1697039562659";
+                    }else if(chip=== "M3 Max"){
+                       chipURL = "https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/mbp-m3-max-icon-202310?wid=102&hei=102&fmt=png-alpha&.v=1697039562691";
+                    }
+
+                    // Processor Title
+                    var processorTitle = macbook.processorTitle.split('\n').join('<br>');
+
+                    // Specification
+                    var specificationItems = macbook.specification.split('\n');
+                    var specificationList = '<ul class="product-specification">';
+                    specificationItems.forEach(function(item) {
+                        specificationList += '<li class="mt-1.5 text-sm font-normal">' + item + '</li>';
+                    });
+                    specificationList += '</ul>';
+
+                    // Default Price
+                    var price = macbook.unitPrice.toLocaleString('en-US', {
+                        minimumFractionDigits: 2,
+                        maximumFractionDigits: 2
+                    });
+
+                    // Installment Price
+                    var installmentPrice = macbook.installmentPrice;
+
+                    // Create the card item for each MacBook
+                    var item = $('<div id="item-' + count + '" class="item max-w-72 rounded overflow-hidden"></div>');
+                    item.append(
+                        '<div class="px-4 pb-5">' +
+                        '<img width="452" height="420" src="'+  macURL +'">' +
+                        '<span id="product-color-' + count + '" class="product-color text-xs font-normal" style="color:#1d1d1f">' + macbook.color + '</span>'+
+                        '<ul class="pt-2 flex">'+
+                        '<li class="pr-2">'+
+                        '<input id="color-radio-' + count + '" type="radio" value="" name="inline-radio-group" class="color-radio w-8 h-8">'+
+                        '</li>'+
+                        '<li class="pr-2">'+
+                        '<input id="color-radio-' + count + '" type="radio" value="" name="inline-radio-group" class="color-radio w-8 h-8">'+
+                        '</li>'+
+                        '</ul>'+
+                        '<img id="chip-' + count + '" class="pt-1 pb-2.5" height="51" width="51" src="' + chipURL + '"/>'+
+                        '<h2 id="processor-title-' + count + '" class="processor-title font-semibold text-xl"></h2>'+
+                        '<div id="product-specification-' + count + '" class="product-specification" pt-5"></div>'+
+                        '<div class="pt-5">'+
+                        '<span id="price-' + count + '" class="block price font-semibold text-2xl"></span>'+
+                        '<span class="block py-2.5 text-xs font-normal">or</span>'+
+                        '<span id="price-month-' + count + '" class="block price-month font-semibold text-2xl"></span>'+
+                        '<a class="pt-1.5 text-sm font-normal" style="color:#06c">Explore monthly instalment options </a>'+
+                        '</div>'+
+                        '<div class="pt-5 mb-6 mt-0.5"><div class="font-semibold text-sm">Add a trade-in</div><div class="font-normal text-sm">Get credit towards a new Mac when you trade in your eligible computer. Or recycle it for free.**</div><a class="pt-1.5 text-sm font-normal" style="color:#06c">Get Started</a></div>'+
+                        '<button onclick="selectBox(this)" id="select-button-' + count + '" class="select-button w-full px-4 py-2 text-white rounded-full shadow-sm font-normal text-sm min-w min-w-11" style="background-color:#0071e3">Select</button>'+
+                        '<div class="pt-6"><div class="font-semibold text-sm">Need a moment?</div><div class="font-normal text-sm">Keep all your selections by saving this device to Your Saves, then come back anytime and pick up right where you left off.                                </div><a class="pt-1.5 text-sm font-normal" style="color:#06c">Save for later</a></div>'+
+                        '<div class="pt-5"><div class="pt-4 flex items-center justify-start"><span class="mr-2"><svg class="as-svgicon-rtl-mirrored as-svgicon as-svgicon-boxtruck as-svgicon-reduced as-svgicon-boxtruckreduced" viewBox="0 0 25 25" role="img" aria-hidden="true" width="25px" height="25px"><path fill="none" d="M0 0h25v25H0z"></path><path fill="#1d1d1f" d="m23.482 12.847-2.92-3.209A1.947 1.947 0 0 0 18.985 9H17V6.495a2.5 2.5 0 0 0-2.5-2.5h-11a2.5 2.5 0 0 0-2.5 2.5v9.75a2.5 2.5 0 0 0 2.5 2.5h.548A2.746 2.746 0 0 0 6.75 21.02 2.618 2.618 0 0 0 9.422 19h6.681a2.744 2.744 0 0 0 5.347-.23h.735A1.656 1.656 0 0 0 24 16.98v-2.808a1.937 1.937 0 0 0-.518-1.325ZM8.426 18.745a1.74 1.74 0 0 1-3.352 0 1.577 1.577 0 0 1 .015-1 1.738 1.738 0 0 1 3.322 0 1.578 1.578 0 0 1 .015 1ZM9.447 18a2.726 2.726 0 0 0-5.394-.255H3.5a1.502 1.502 0 0 1-1.5-1.5v-9.75a1.502 1.502 0 0 1 1.5-1.5h11a1.502 1.502 0 0 1 1.5 1.5V18Zm10.972.77a1.738 1.738 0 0 1-3.337 0 1.573 1.573 0 0 1 0-1 1.742 1.742 0 1 1 3.337 1ZM23 16.98c0 .569-.229.79-.815.79h-.735A2.73 2.73 0 0 0 17 16.165V10h1.986a.976.976 0 0 1 .838.314l2.927 3.214a.95.95 0 0 1 .249.644Zm-1.324-3.36a.512.512 0 0 1 .174.38h-3.306a.499.499 0 0 1-.544-.528V11h1.073a.76.76 0 0 1 .594.268Z"></path></svg></span><div class="font-base text-sm">Order by 3:00 pm. Delivers to <a style="color:#06c"> 40100</a>(Get Delivery Dates)</div></div><div class="font-semibold text-sm ml-2">Tue 14/05/2024 — Free</div></div>'+
+                        '</div>'
+                    );
+
+                    // Append item to the grid container
+                    gridContainer.append(item);
+
+                    //Set the text or append element to respective element
+                    $('#processor-title-' + count).append('<h2>' + processorTitle + '</h2>');
+                    $('#product-color-' + count).text(macbookColor);
+                    $('#product-specification-' + count).append(specificationList);
+                    $('#price-' + count).text('RM ' + price);
+                    $('#price-month-' + count).text('RM ' +  installmentPrice  + '/mo. for 24 mo.*');
+
+                    //Set Data Value
+                    $('#chip-' + count).data('value', chip);
+                    $('#color-radio-' + count).data('value', macbookColor);
+                    $('#select-button-' + count).data('value', macbook.id + "-" + chip + "-" + macbookColor);
+
+                    count++;
+                });
+            },
+            error: function(xhr, status, error) {
+                console.error('Error fetching MacBook data:', error);
+            }
+        });
+
+        //attach click event listener to all btn
+        $('#16-inch-m3-max-btn').click(function() {
         $(this).css({
             "background-color": "#1d1d1f",
         });
         $(this).addClass("text-white");
-        $("#m3-max-btn").removeClass("text-white");
-        $("#m3-max-btn").css({
+        $("#16-inch-all-btn").removeClass("text-white");
+        $("#16-inch-all-btn").css({
             "background-color": "#e8e8ed",
         });
-        $("#m3-pro-btn").removeClass("text-white");
-        $("#m3-pro-btn").css({
+        $("#16-inch-m3-pro-btn").removeClass("text-white");
+        $("#16-inch-m3-pro-btn").css({
             "background-color": "#e8e8ed",
         });
-        $("#all-btn").removeClass("text-white");
-        $("#all-btn").css({
-            "background-color": "#e8e8ed",
+
+        $('.grid.grid-cols-3.gap-4').empty();
+
+         $.ajax({
+        url: 'http://localhost:8080/api/macbook/findByChipAndSize?chip=M3%20Max&size=16-inch',
+        method: 'GET',
+            success: function(data) {
+
+            // Select the existing grid container
+            var gridContainer = $('.grid.grid-cols-3.gap-4');
+            let count = 1;
+
+                // Loop through each MacBook data item
+                data.forEach(function(macbook) {
+
+                    //Determine the macbook image to be displayed
+                    var macURL;
+                    var macbookColor = macbook.color;
+                    if(macbook.color=== "Space Grey"){
+                        macURL = "https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/mbp14-spacegray-select-202310?wid=904&hei=840&fmt=jpeg&qlt=90&.v=1697230830200";
+                    }else if(macbook.color=== "Space Black"){
+                        macURL = "https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/mbp16-spaceblack-select-202310?wid=904&hei=840&fmt=jpeg&qlt=90&.v=1697311054290";
+                    }else if(macbook.color=== "Silver"){
+                        macURL = "https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/mbp16-spaceblack-select-202310?wid=904&hei=840&fmt=jpeg&qlt=90&.v=1697311054290";
+                    }
+
+                    //Determine the chip image to be displayed
+                    var chipURL;
+                    var chip = macbook.chip;
+
+                    if(chip=== "M3"){
+                       chipURL = "https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/mbp-m3-icon-202310?wid=102&hei=102&fmt=png-alpha&.v=1697039562647";
+                    }else if(chip=== "M3 Pro"){
+                       chipURL = "https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/mbp-m3-pro-icon-202310?wid=102&hei=102&fmt=png-alpha&.v=1697039562659";
+                    }else if(chip=== "M3 Max"){
+                       chipURL = "https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/mbp-m3-max-icon-202310?wid=102&hei=102&fmt=png-alpha&.v=1697039562691";
+                    }
+
+                    // Processor Title
+                    var processorTitle = macbook.processorTitle.split('\n').join('<br>');
+
+                    // Specification
+                    var specificationItems = macbook.specification.split('\n');
+                    var specificationList = '<ul class="product-specification">';
+                    specificationItems.forEach(function(item) {
+                        specificationList += '<li class="mt-1.5 text-sm font-normal">' + item + '</li>';
+                    });
+                    specificationList += '</ul>';
+
+                    // Default Price
+                    var price = macbook.unitPrice.toLocaleString('en-US', {
+                        minimumFractionDigits: 2,
+                        maximumFractionDigits: 2
+                    });
+
+                    // Installment Price
+                    var installmentPrice = macbook.installmentPrice;
+
+                    // Create the card item for each MacBook
+                    var item = $('<div id="item-' + count + '" class="item max-w-72 rounded overflow-hidden"></div>');
+                    item.append(
+                        '<div class="px-4 pb-5">' +
+                        '<img width="452" height="420" src="'+  macURL +'">' +
+                        '<span id="product-color-' + count + '" class="product-color text-xs font-normal" style="color:#1d1d1f">' + macbook.color + '</span>'+
+                        '<ul class="pt-2 flex">'+
+                        '<li class="pr-2">'+
+                        '<input id="color-radio-' + count + '" type="radio" value="" name="inline-radio-group" class="color-radio w-8 h-8">'+
+                        '</li>'+
+                        '<li class="pr-2">'+
+                        '<input id="color-radio-' + count + '" type="radio" value="" name="inline-radio-group" class="color-radio w-8 h-8">'+
+                        '</li>'+
+                        '</ul>'+
+                        '<img id="chip-' + count + '" class="pt-1 pb-2.5" height="51" width="51" src="' + chipURL + '"/>'+
+                        '<h2 id="processor-title-' + count + '" class="processor-title font-semibold text-xl"></h2>'+
+                        '<div id="product-specification-' + count + '" class="product-specification" pt-5"></div>'+
+                        '<div class="pt-5">'+
+                        '<span id="price-' + count + '" class="block price font-semibold text-2xl"></span>'+
+                        '<span class="block py-2.5 text-xs font-normal">or</span>'+
+                        '<span id="price-month-' + count + '" class="block price-month font-semibold text-2xl"></span>'+
+                        '<a class="pt-1.5 text-sm font-normal" style="color:#06c">Explore monthly instalment options </a>'+
+                        '</div>'+
+                        '<div class="pt-5 mb-6 mt-0.5"><div class="font-semibold text-sm">Add a trade-in</div><div class="font-normal text-sm">Get credit towards a new Mac when you trade in your eligible computer. Or recycle it for free.**</div><a class="pt-1.5 text-sm font-normal" style="color:#06c">Get Started</a></div>'+
+                        '<button onclick="selectBox(this)" id="select-button-' + count + '" class="select-button w-full px-4 py-2 text-white rounded-full shadow-sm font-normal text-sm min-w min-w-11" style="background-color:#0071e3">Select</button>'+
+                        '<div class="pt-6"><div class="font-semibold text-sm">Need a moment?</div><div class="font-normal text-sm">Keep all your selections by saving this device to Your Saves, then come back anytime and pick up right where you left off.                                </div><a class="pt-1.5 text-sm font-normal" style="color:#06c">Save for later</a></div>'+
+                        '<div class="pt-5"><div class="pt-4 flex items-center justify-start"><span class="mr-2"><svg class="as-svgicon-rtl-mirrored as-svgicon as-svgicon-boxtruck as-svgicon-reduced as-svgicon-boxtruckreduced" viewBox="0 0 25 25" role="img" aria-hidden="true" width="25px" height="25px"><path fill="none" d="M0 0h25v25H0z"></path><path fill="#1d1d1f" d="m23.482 12.847-2.92-3.209A1.947 1.947 0 0 0 18.985 9H17V6.495a2.5 2.5 0 0 0-2.5-2.5h-11a2.5 2.5 0 0 0-2.5 2.5v9.75a2.5 2.5 0 0 0 2.5 2.5h.548A2.746 2.746 0 0 0 6.75 21.02 2.618 2.618 0 0 0 9.422 19h6.681a2.744 2.744 0 0 0 5.347-.23h.735A1.656 1.656 0 0 0 24 16.98v-2.808a1.937 1.937 0 0 0-.518-1.325ZM8.426 18.745a1.74 1.74 0 0 1-3.352 0 1.577 1.577 0 0 1 .015-1 1.738 1.738 0 0 1 3.322 0 1.578 1.578 0 0 1 .015 1ZM9.447 18a2.726 2.726 0 0 0-5.394-.255H3.5a1.502 1.502 0 0 1-1.5-1.5v-9.75a1.502 1.502 0 0 1 1.5-1.5h11a1.502 1.502 0 0 1 1.5 1.5V18Zm10.972.77a1.738 1.738 0 0 1-3.337 0 1.573 1.573 0 0 1 0-1 1.742 1.742 0 1 1 3.337 1ZM23 16.98c0 .569-.229.79-.815.79h-.735A2.73 2.73 0 0 0 17 16.165V10h1.986a.976.976 0 0 1 .838.314l2.927 3.214a.95.95 0 0 1 .249.644Zm-1.324-3.36a.512.512 0 0 1 .174.38h-3.306a.499.499 0 0 1-.544-.528V11h1.073a.76.76 0 0 1 .594.268Z"></path></svg></span><div class="font-base text-sm">Order by 3:00 pm. Delivers to <a style="color:#06c"> 40100</a>(Get Delivery Dates)</div></div><div class="font-semibold text-sm ml-2">Tue 14/05/2024 — Free</div></div>'+
+                        '</div>'
+                    );
+
+                    // Append item to the grid container
+                    gridContainer.append(item);
+
+                    //Set the text or append element to respective element
+                    $('#processor-title-' + count).append('<h2>' + processorTitle + '</h2>');
+                    $('#product-color-' + count).text(macbookColor);
+                    $('#product-specification-' + count).append(specificationList);
+                    $('#price-' + count).text('RM ' + price);
+                    $('#price-month-' + count).text('RM ' +  installmentPrice  + '/mo. for 24 mo.*');
+
+                    //Set Data Value
+                    $('#chip-' + count).data('value', chip);
+                    $('#color-radio-' + count).data('value', macbookColor);
+                    $('#select-button-' + count).data('value', macbook.id + "-" + chip + "-" + macbookColor);
+
+                    count++;
+                });
+            },
+            error: function(xhr, status, error) {
+                console.error('Error fetching MacBook data:', error);
+            }
         });
     });
-
-    $("#m3-pro-btn").click(function(){
-        $(this).css({
-            "background-color": "#1d1d1f",
-        });
-        $(this).addClass("text-white");
-        $("#m3-max-btn").removeClass("text-white");
-        $("#m3-max-btn").css({
-            "background-color": "#e8e8ed",
-        });
-        $("#all-btn").removeClass("text-white");
-        $("#all-btn").css({
-            "background-color": "#e8e8ed",
-        });
-        $("#m3-btn").removeClass("text-white");
-        $("#m3-btn").css({
-            "background-color": "#e8e8ed",
-        });
+    });
+    });
     });
 
-    $("#all-btn").click();
-  });
+    //set all and 14 inch btn as default upon page load
+    $('.grid.grid-cols-3.gap-4').empty();
+    $('.14-button').click();
+    $('#14-inch-all-btn').click();
+
+});
+
+     function selectBox(button){
+
+        //Get Data Value
+        var dataValue = $(button).data('value');
+
+        var data = dataValue.split("-");
+
+        var url = '/product.html' + '?id=' + encodeURIComponent(data[0]) + '&chip=' + encodeURIComponent(data[1]) + '&color=' + encodeURIComponent(data[2]);
+        console.log(url);
+
+        window.location.href = url;
+    }
 </script>
 </html>
