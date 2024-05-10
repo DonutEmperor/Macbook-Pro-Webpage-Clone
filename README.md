@@ -125,10 +125,9 @@ Full-Selection Page (70% completed)
 There are several problems which I was unable solve in time. One being:
 ![chrome_X96OMK5gEQ](https://github.com/DonutEmperor/Macbook-Pro-Webpage-Clone/assets/56782553/b16da306-eb28-4f1d-8d96-42229c271b65)
 
-# Product Detail Page
-
-
-
+# Product Detail Page (10%)
+Couldn't finish the frontend thus decided to try display the data instead but encountered a csrf CORB issue when attempting to display data via API Call, didn't manage to dig into it to solve it.
+![image](https://github.com/DonutEmperor/Macbook-Pro-Webpage-Clone/assets/56782553/bfab3235-8f38-4a62-a0f4-f60e63cf095a) 
 
 Note: Unfortunately, I wasn't able to polish the css to be 100% identical in time.
 
