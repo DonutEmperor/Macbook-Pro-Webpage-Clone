@@ -9,6 +9,10 @@ Product Detail Page: Apple MacBook Pro 14-inch Detail Page
 https://www.apple.com/my/shop/buy-mac/macbook-pro/14-inch-space-black-apple-m3-max-with-14-core-cpu-and-30-core-gpu-36gb-memory-1tb 
 
 # Schema
+Single Entity  
+
+![Schena drawio](https://github.com/DonutEmperor/Macbook-Pro-Webpage-Clone/assets/56782553/2e969bca-4bbb-43b6-9591-99ba094ae73f)
+
 ```
 package dev.maxsonchen.ProductAPI.appleproducts;
 
